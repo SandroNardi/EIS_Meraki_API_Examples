@@ -1,0 +1,1033 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C",
+    "name": "Updated Device status on unreachable-Webhook trigger_Step 1",
+    "title": "Updated Device status on unreachable-Webhook trigger_Step 1",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Local - alertType",
+          "type": "datatype.string",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VPSLH7SANKY4fRCPqg9jCLEOVBcSaGn54",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Local - deviceMac",
+          "type": "datatype.string",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VPSLH7SA1VP1iae8nfcS9fuZEPuboL360",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 1200,
+          "scope": "input",
+          "name": "Input - Config Changes look back (sec.)",
+          "type": "datatype.integer",
+          "is_required": false,
+          "display_on_wizard": true,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VPSLH7S9NX23tRM3NdDRtYUK8hcGophRG",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Local - networkName",
+          "type": "datatype.string",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VPSLH7S9SD01rcR26vsBEIgY1EUgJsdng",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Local - alertTypeId",
+          "type": "datatype.string",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VPSLH7SAWYZ292gEHeQjNVTycOM5BnJQB",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Local - productType",
+          "type": "datatype.string",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VPSLH7SA67B60zm56jjqWF2JDoBuiZ9WN",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Local - alertLevel",
+          "type": "datatype.string",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VPSLH7S95303LXzP09rgHwLM81KgTydgR",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.integer",
+        "properties": {
+          "value": 43200,
+          "scope": "input",
+          "name": "Input - Device Avail. look back (sec.)",
+          "type": "datatype.integer",
+          "is_required": false,
+          "display_on_wizard": true,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VPSLH7S9A0C6edKzD2CJaia3MzD2jvleS",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Local - started_at",
+          "type": "datatype.string",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VPSLH7S9JON1As692ehuAjIgw5jWtIeTD",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Local - organizationId",
+          "type": "datatype.string",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VPSLH7S9F2D3WZwkFrr4xRdvdYRapxuXu",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Local - deviceName",
+          "type": "datatype.string",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VPSLH7SAAC75qcPDf70gFY9exXio4bsx0",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Local - deviceSerial",
+          "type": "datatype.string",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VPSLH7S9XJG74PhZNazkhgzgZAby4bp9p",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Local - organizationName",
+          "type": "datatype.string",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VPSLH7SARV55iUJURxmW22iXwTnpYeSgY",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Local - networkId",
+          "type": "datatype.string",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VPSLH7SAIE43O4bi7yx8f0emqQn068KIb",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "input",
+          "name": "Input - Alert_request_body",
+          "type": "datatype.string",
+          "is_required": true,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": "json"
+        },
+        "unique_name": "variable_workflow_02VPSLH7SAEG7568fRfVoSnLpGYCiq1v2Yf",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "automation_rules": {
+        "type": [
+          "webhook.rule_event"
+        ]
+      },
+      "delete_workflow_instance": false,
+      "description": "Triggered by a Meraki webhook when a device reports an unreachable alert. Parses the alert payload, then simultaneously collects contextual data from the Meraki API: configuration changes, device availability history, CDP/LLDP neighbor info, network events, and firmware upgrade status. All data is passed to an AI LLM (Cisco Circuit / GPT) for concise root cause analysis. A Python script formats results into a Webex Markdown message, delivered automatically via Webex API to a specified room.\n\n**Key inputs:** Webhook JSON body, Webex Room ID, availability lookback (default 12h), config changes lookback (default 1200s).\n\n**Integrations:** Cisco Meraki API · AI LLM · Webex APIs",
+      "display_name": "Updated Device status on unreachable-Webhook trigger_Step 1",
+      "runtime_user": {
+        "target_default": true
+      },
+      "target": {
+        "target_type": "meraki.endpoint",
+        "target_id": "$module_target;Meraki Endpoint;securex:ao:meraki_workflows;meraki-platform-apis$",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_02VPSLHEY99JH2DF5mDH9iLrqFf2L9TdCOR",
+        "name": "JSONPath Query",
+        "title": "Extract data from Alert payload",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "description": "JSONPath Query to get value in JSON",
+          "display_name": "Extract data from Alert payload",
+          "input_json": "$rule.webhook rule_event.output.request_body$",
+          "jsonpath_queries": [
+            {
+              "jsonpath_query": "$.organizationId",
+              "jsonpath_query_name": "organizationId",
+              "jsonpath_query_type": "string",
+              "set_default_value": false,
+              "zdate_type_format": "yyyy-MM-dd'T'HH:mm:ssZ"
+            },
+            {
+              "jsonpath_query": "$.organizationName",
+              "jsonpath_query_name": "organizationName",
+              "jsonpath_query_type": "string",
+              "set_default_value": false,
+              "zdate_type_format": "yyyy-MM-dd'T'HH:mm:ssZ"
+            },
+            {
+              "jsonpath_query": "$.networkId",
+              "jsonpath_query_name": "networkId",
+              "jsonpath_query_type": "string",
+              "set_default_value": false,
+              "zdate_type_format": "yyyy-MM-dd'T'HH:mm:ssZ"
+            },
+            {
+              "jsonpath_query": "$.networkName",
+              "jsonpath_query_name": "networkName",
+              "jsonpath_query_type": "string",
+              "set_default_value": false,
+              "zdate_type_format": "yyyy-MM-dd'T'HH:mm:ssZ"
+            },
+            {
+              "jsonpath_query": "$.deviceSerial",
+              "jsonpath_query_name": "deviceSerial",
+              "jsonpath_query_type": "string",
+              "set_default_value": false,
+              "zdate_type_format": "yyyy-MM-dd'T'HH:mm:ssZ"
+            },
+            {
+              "jsonpath_query": "$.deviceName",
+              "jsonpath_query_name": "deviceName",
+              "jsonpath_query_type": "string",
+              "set_default_value": false,
+              "zdate_type_format": "yyyy-MM-dd'T'HH:mm:ssZ"
+            },
+            {
+              "jsonpath_query": "$.deviceMac",
+              "jsonpath_query_name": "deviceMac",
+              "jsonpath_query_type": "string",
+              "set_default_value": false,
+              "zdate_type_format": "yyyy-MM-dd'T'HH:mm:ssZ"
+            },
+            {
+              "jsonpath_query": "$.alertType",
+              "jsonpath_query_name": "alertType",
+              "jsonpath_query_type": "string",
+              "set_default_value": false,
+              "zdate_type_format": "yyyy-MM-dd'T'HH:mm:ssZ"
+            },
+            {
+              "jsonpath_query": "$.alertLevel",
+              "jsonpath_query_name": "alertLevel",
+              "jsonpath_query_type": "string",
+              "set_default_value": false,
+              "zdate_type_format": "yyyy-MM-dd'T'HH:mm:ssZ"
+            },
+            {
+              "jsonpath_query": "$.alertTypeId",
+              "jsonpath_query_name": "alertTypeId",
+              "jsonpath_query_type": "string",
+              "set_default_value": false,
+              "zdate_type_format": "yyyy-MM-dd'T'HH:mm:ssZ"
+            },
+            {
+              "jsonpath_query": "$.alertData.started_at",
+              "jsonpath_query_name": "started_at",
+              "jsonpath_query_type": "string",
+              "set_default_value": false,
+              "zdate_type_format": "yyyy-MM-dd'T'HH:mm:ssZ"
+            }
+          ],
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_02VPSLHHK3U9Y1TzVNUfkzdRQQx2knUL0qy",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "description": "Set Variables",
+          "display_name": "Set Variables",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7S9F2D3WZwkFrr4xRdvdYRapxuXu$",
+              "variable_value_new": "$activity.definition_activity_02VPSLHEY99JH2DF5mDH9iLrqFf2L9TdCOR.output.jsonpath_queries.organizationId$"
+            },
+            {
+              "variable_to_update": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7SARV55iUJURxmW22iXwTnpYeSgY$",
+              "variable_value_new": "$activity.definition_activity_02VPSLHEY99JH2DF5mDH9iLrqFf2L9TdCOR.output.jsonpath_queries.organizationName$"
+            },
+            {
+              "variable_to_update": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7SAIE43O4bi7yx8f0emqQn068KIb$",
+              "variable_value_new": "$activity.definition_activity_02VPSLHEY99JH2DF5mDH9iLrqFf2L9TdCOR.output.jsonpath_queries.networkId$"
+            },
+            {
+              "variable_to_update": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7S9SD01rcR26vsBEIgY1EUgJsdng$",
+              "variable_value_new": "$activity.definition_activity_02VPSLHEY99JH2DF5mDH9iLrqFf2L9TdCOR.output.jsonpath_queries.networkName$"
+            },
+            {
+              "variable_to_update": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7S9XJG74PhZNazkhgzgZAby4bp9p$",
+              "variable_value_new": "$activity.definition_activity_02VPSLHEY99JH2DF5mDH9iLrqFf2L9TdCOR.output.jsonpath_queries.deviceSerial$"
+            },
+            {
+              "variable_to_update": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7SAAC75qcPDf70gFY9exXio4bsx0$",
+              "variable_value_new": "$activity.definition_activity_02VPSLHEY99JH2DF5mDH9iLrqFf2L9TdCOR.output.jsonpath_queries.deviceName$"
+            },
+            {
+              "variable_to_update": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7SA1VP1iae8nfcS9fuZEPuboL360$",
+              "variable_value_new": "$activity.definition_activity_02VPSLHEY99JH2DF5mDH9iLrqFf2L9TdCOR.output.jsonpath_queries.deviceMac$"
+            },
+            {
+              "variable_to_update": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7S95303LXzP09rgHwLM81KgTydgR$",
+              "variable_value_new": "$activity.definition_activity_02VPSLHEY99JH2DF5mDH9iLrqFf2L9TdCOR.output.jsonpath_queries.alertLevel$"
+            },
+            {
+              "variable_to_update": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7SANKY4fRCPqg9jCLEOVBcSaGn54$",
+              "variable_value_new": "$activity.definition_activity_02VPSLHEY99JH2DF5mDH9iLrqFf2L9TdCOR.output.jsonpath_queries.alertType$"
+            },
+            {
+              "variable_to_update": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7SAWYZ292gEHeQjNVTycOM5BnJQB$",
+              "variable_value_new": "$activity.definition_activity_02VPSLHEY99JH2DF5mDH9iLrqFf2L9TdCOR.output.jsonpath_queries.alertTypeId$"
+            },
+            {
+              "variable_to_update": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7S9JON1As692ehuAjIgw5jWtIeTD$",
+              "variable_value_new": "$activity.definition_activity_02VPSLHEY99JH2DF5mDH9iLrqFf2L9TdCOR.output.jsonpath_queries.started_at$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_02VPSLHK7BAM75YbtusL3jHnSdabcz2uCVv",
+        "name": "Parallel Block",
+        "title": "Parallel Block",
+        "type": "logic.parallel",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "description": "Parallel block action",
+          "display_name": "Parallel Block",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_02VPSLHLQNI5800cLfqkYNZxRP5QbVDGais",
+            "name": "Parallel Branch",
+            "title": "Time difference",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Time difference",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_02VPSLHNJT9J40cXZmplISnufDj4cCEY7f2",
+                "name": "Calculate Date",
+                "title": "Config seconds to look back",
+                "type": "core.calculate_date",
+                "base_type": "activity",
+                "properties": {
+                  "adjustment": "-$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.input.variable_workflow_02VPSLH7S9NX23tRM3NdDRtYUK8hcGophRG$",
+                  "continue_on_failure": false,
+                  "description": "Calculate Date calculates a new DateTime value based on a specified original DateTime and adjustments",
+                  "display_name": "Config seconds to look back",
+                  "original_date": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7S9JON1As692ehuAjIgw5jWtIeTD$",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_02VPSLHP53ECD5LIukdlTs7SIG770Fw0sVX",
+                "name": "Calculate Date",
+                "title": "Device Avaialbiltiy to look back",
+                "type": "core.calculate_date",
+                "base_type": "activity",
+                "properties": {
+                  "adjustment": "-$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.input.variable_workflow_02VPSLH7S9A0C6edKzD2CJaia3MzD2jvleS$",
+                  "continue_on_failure": false,
+                  "description": "Calculate Date calculates a new DateTime value based on a specified original DateTime and adjustments",
+                  "display_name": "Device Avaialbiltiy to look back",
+                  "original_date": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7S9JON1As692ehuAjIgw5jWtIeTD$",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_02VPSLHQTKNGL4SjIkrJVLGOJjsKBCtfrDB",
+            "name": "Parallel Branch",
+            "title": "Parallel Branch",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Parallel Branch",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_02VPSLHSN5PG95L6uubjfIIkdvH1ejhMpMI",
+                "name": "Execute Python Script",
+                "title": "Generate an array with a single serial number",
+                "type": "python3.script",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": false,
+                  "description": "Execute Python Script",
+                  "display_name": "Generate an array with a single serial number",
+                  "script": "serial_array_form = [\"$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7S9XJG74PhZNazkhgzgZAby4bp9p$\"]",
+                  "script_arguments": [],
+                  "script_queries": [
+                    {
+                      "script_query": "serial_array_form",
+                      "script_query_name": "serial_array_form",
+                      "script_query_type": "array"
+                    }
+                  ],
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_02VPSLHWYGSNJ6snx9RrunHIEyzVXoiilc5",
+                "name": "Meraki - Get Organization Devices",
+                "title": "Meraki - Get Organization Devices",
+                "type": "workflow.atomic_workflow",
+                "base_type": "subworkflow",
+                "properties": {
+                  "continue_on_failure": false,
+                  "description": "**Cisco Meraki - Devices - Get Organization Devices**\n\nList the devices in an organization that have been assigned to networks.\n\n**Target:** A Meraki Endpoint using HTTPS \"api.meraki.com\" port 443 and no path.\n\n**Account Key:** Meraki User API Key. API Key can be generated from Meraki Dashboard -> User Profile -> API Access.\n\nSteps:\n[] Sends Get Network request to Meraki\n[] Check if the request was successful:\n[]> If it was, attempt to extract the results and set the output variables\n[]> If it wasn't, return the error and marks the workflow as failed.\n\nNOTE: Empty attributes in the request are removed from the payload before sending to Meraki. \n\nMore information about this API: https://developer.cisco.com/meraki/api-v1/get-organization-networks/",
+                  "display_name": "Meraki - Get Organization Devices",
+                  "input": {
+                    "variable_workflow_02LBZJE84MKWU3b4u5iWvF5C56j3SWvcLxU": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7S9F2D3WZwkFrr4xRdvdYRapxuXu$",
+                    "variable_workflow_02LPD34ABGELX4xRBULzEWn7yZXmlOLnhlm": "",
+                    "variable_workflow_02LPD34ABGWM530L7Ref10RR1lIyS6swy7y": "",
+                    "variable_workflow_02LPD34ABH4NB5Y3srIX91xn9cIzEY68MMa": "withAnyTags",
+                    "variable_workflow_02LPD34ABHCES6OHeiXWIvVmRKLdKquVK4f": [],
+                    "variable_workflow_02LPD34ABHKTT7bzR3DO9wR6Jt8QIVkTmKA": [],
+                    "variable_workflow_02LPD34ABHUR66qxroFyemfNTX3wjVrx4bB": "",
+                    "variable_workflow_02LPD34ABI5767Bipcwnil1zhzAhMVqXU77": "",
+                    "variable_workflow_02LPD34ABICWG2rq68sl7VROvFjqB8bmooh": [],
+                    "variable_workflow_02LPD34ABIJYH3MHQNXX88Tf38tgg2nnaiV": "$activity.definition_activity_02VPSLHSN5PG95L6uubjfIIkdvH1ejhMpMI.output.script_queries.serial_array_form$",
+                    "variable_workflow_02LPD34ABIRIY7ksRBfahOf52zARKfji5tq": "",
+                    "variable_workflow_02LPD34ABIZNM1hpRmCW4fNi50a79mCW4oF": 1000,
+                    "variable_workflow_02LPD34ABJ73Y1vUpFZq8UjZK37FVXisvfT": "",
+                    "variable_workflow_02LPD34ABJFEJ26DNauhcFei0QIVgWIgCYw": [],
+                    "variable_workflow_02LPD34ABJV2C0tJTsG5KJNoU4RZ9yRWNBC": [],
+                    "variable_workflow_02LPD34ABK6IH5MaynNsHWnm1mpCQw0TkyQ": [],
+                    "variable_workflow_02LPD34ABKF695YGotxETEugS06mLWBlnVr": [],
+                    "variable_workflow_02LPD34ABKNYC53bhvdbdyJKVnk3JPbMbDL": "",
+                    "variable_workflow_02VJ70HJSV4SG2EQAFCPWivy4DrRoegrq7b": []
+                  },
+                  "runtime_user": {
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "target_type": "meraki.endpoint",
+                    "use_workflow_target": true
+                  },
+                  "workflow_id": "definition_workflow_02LBZJE7PQZVJ3crE33ELBrscM7zWeiugTw",
+                  "workflow_name": "Meraki - Get Organization Devices"
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_02VPSLHZ40G2J6Qe5rkxQchuN0ZabONXwNB",
+                "name": "JSONPath Query",
+                "title": "Extract the product type from the first item in the response",
+                "type": "corejava.jsonpathquery",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": false,
+                  "description": "JSONPath Query to get value in JSON",
+                  "display_name": "Extract the product type from the first item in the response",
+                  "input_json": "$activity.definition_activity_02VPSLHWYGSNJ6snx9RrunHIEyzVXoiilc5.output.variable_workflow_02LBZJE84NB1F75jMCnZjaIsHHmn1NBoO2y$",
+                  "jsonpath_queries": [
+                    {
+                      "jsonpath_query": "$.[0].productType",
+                      "jsonpath_query_name": "productType",
+                      "jsonpath_query_type": "string",
+                      "set_default_value": false,
+                      "zdate_type_format": "yyyy-MM-dd'T'HH:mm:ssZ"
+                    }
+                  ],
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_02VPSLI17MJBU0peBSaB6dDf5pqoRy2zbti",
+                "name": "Set Variables",
+                "title": "Set Variables",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "description": "Set Variables",
+                  "display_name": "Set Variables",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7SA67B60zm56jjqWF2JDoBuiZ9WN$",
+                      "variable_value_new": "$activity.definition_activity_02VPSLHZ40G2J6Qe5rkxQchuN0ZabONXwNB.output.jsonpath_queries.productType$"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_02VPSLI3348EU2B0GLEUBR2kskegJS1kMtY",
+        "name": "Parallel Block",
+        "title": "Fetch various logs",
+        "type": "logic.parallel",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "description": "Parallel block action",
+          "display_name": "Fetch various logs",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_02VPSLI4NAUA02RXgcE7EUh7CizOUsWqMOz",
+            "name": "Parallel Branch",
+            "title": "Get config changes last X minutes",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Get config changes last X minutes",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_02VPSLI77HTVJ5OMtc2BZYN4S1iPgMsvtI1",
+                "name": "Meraki - Get Organization Configuration Changes",
+                "title": "Meraki - Get Organization Configuration Changes",
+                "type": "workflow.atomic_workflow",
+                "base_type": "subworkflow",
+                "properties": {
+                  "continue_on_failure": false,
+                  "description": "View the Change Log for your organization",
+                  "display_name": "Meraki - Get Organization Configuration Changes",
+                  "input": {
+                    "variable_workflow_02OARCKD9VXSG3TLxzJw8ync3OOePcWSTl6": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7S9F2D3WZwkFrr4xRdvdYRapxuXu$",
+                    "variable_workflow_02P699F16MMS00YMEaRHTSsiloe3gUm4xWC": "$activity.definition_activity_02VPSLHNJT9J40cXZmplISnufDj4cCEY7f2.output.result$",
+                    "variable_workflow_02P699F16MOBK70fJhc18c52c5ZINo8QGIe": "",
+                    "variable_workflow_02P699F16MP3C3vpC8XmYCrkBm3KmpHqyNj": "",
+                    "variable_workflow_02P699F16MPV47H2LNbL9hwcgDQ0qS3rvOg": "",
+                    "variable_workflow_02P699F16MQMW2kUmPPhnRtVdSFqvna8tGW": "",
+                    "variable_workflow_02P699F16MREO4ebSpSNZVOCIqf8Dwt6nTW": "",
+                    "variable_workflow_02P699F16MSY86hOp2zYGsLAqmOBDSggg1b": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7SAIE43O4bi7yx8f0emqQn068KIb$",
+                    "variable_workflow_02P699F16MUHS7mhaSl9IXbvkKF2MnydvwQ": ""
+                  },
+                  "runtime_user": {
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "target_type": "meraki.endpoint",
+                    "use_workflow_target": true
+                  },
+                  "workflow_id": "definition_workflow_02OARCKD9VRM83izy3wJ19rTPd9wMVeYCKm",
+                  "workflow_name": "Meraki - Get Organization Configuration Changes"
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_02VPSLI9EQI2N7VVMJhd1twHBskGDOzgDXO",
+            "name": "Parallel Branch",
+            "title": "Get CDP info",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Get CDP info",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_02VPSLIBWXERE7UzCRRoo7ohQARgpwbh0Ds",
+                "name": "Meraki - Get Device Lldp Cdp",
+                "title": "Meraki - Get Device Lldp Cdp",
+                "type": "workflow.atomic_workflow",
+                "base_type": "subworkflow",
+                "properties": {
+                  "continue_on_failure": false,
+                  "description": "List LLDP and CDP information for a device",
+                  "display_name": "Meraki - Get Device Lldp Cdp",
+                  "input": {
+                    "variable_workflow_02OARC9SOCOQW7mrR6CdE4BFQgBSRd0ispP": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7S9XJG74PhZNazkhgzgZAby4bp9p$"
+                  },
+                  "runtime_user": {
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "target_type": "meraki.endpoint",
+                    "use_workflow_target": true
+                  },
+                  "workflow_id": "definition_workflow_02OARC9SOCK487adxf3WF1CX4b1EgV0XChp",
+                  "workflow_name": "Meraki - Get Device Lldp Cdp"
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_02VPSLIE0I42D5CWQhXOhaWiIpgVIwKFqIo",
+            "name": "Parallel Branch",
+            "title": "Get Device Availability last X minutes",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Get Device Availability last X minutes",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_02VPSLIGJK7HU6We3HWEJ4YeW8zharXDfz7",
+                "name": "Meraki - Get Organization Devices Availabilities Change History",
+                "title": "Meraki - Get Organization Devices Availabilities Change History",
+                "type": "workflow.atomic_workflow",
+                "base_type": "subworkflow",
+                "properties": {
+                  "continue_on_failure": false,
+                  "description": "List the availability history information for devices in an organization.",
+                  "display_name": "Meraki - Get Organization Devices Availabilities Change History",
+                  "input": {
+                    "variable_workflow_02OARCKEMTHOO3uMc5It2bUXYLJWekqWwMF": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7S9F2D3WZwkFrr4xRdvdYRapxuXu$",
+                    "variable_workflow_02P699F3OVU881JOPnJOIkoWSeOSZ0LYheA": "",
+                    "variable_workflow_02P699F3OVV007IrSwJKhysNsn5ZDPdGZkO": "",
+                    "variable_workflow_02P699F3OVVRS0CWTKEQMBIRectJxGE5Rim": "",
+                    "variable_workflow_02P699F3OVWJK01xOKH7rJbjUoAWVEUsTho": "$activity.definition_activity_02VPSLHP53ECD5LIukdlTs7SIG770Fw0sVX.output.result$",
+                    "variable_workflow_02P699F3OVXBC5AOAFkPoVI0ve143VJ8BKM": "",
+                    "variable_workflow_02P699F3OVY344TmQbFaM8hF0xBMEecv7ZQ": "",
+                    "variable_workflow_02P699F3OVYUW5Q8HBmWK2h80o8wtDfgwOU": "[\"$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7S9XJG74PhZNazkhgzgZAby4bp9p$\"]",
+                    "variable_workflow_02P699F3OW0EG3pcJACPwXqfXRX5FZCBC3Y": "[]",
+                    "variable_workflow_02P699F3OW1687QulURiivh4g5uAIaGXx4Y": "[]",
+                    "variable_workflow_02P699F3OW1Y03QKipnQGb5I6wCptr2v5CV": "[]"
+                  },
+                  "runtime_user": {
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "target_type": "meraki.endpoint",
+                    "use_workflow_target": true
+                  },
+                  "workflow_id": "definition_workflow_02OARCKEMTDTS6N2upncyP1MEkDymC0Cmu9",
+                  "workflow_name": "Meraki - Get Organization Devices Availabilities Change History"
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_02VPSLIIVOWUW1BMxxuiar4r7WjFjf2hzO9",
+            "name": "Parallel Branch",
+            "title": "Get device events",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Get device events",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_02VPSLILKWVW12l8Fixk8WkX1ej1C2GyHWY",
+                "name": "Meraki - Get Network Events",
+                "title": "Meraki - Get Network Events",
+                "type": "workflow.atomic_workflow",
+                "base_type": "subworkflow",
+                "properties": {
+                  "continue_on_failure": false,
+                  "description": "List the events for the network",
+                  "display_name": "Meraki - Get Network Events",
+                  "input": {
+                    "variable_workflow_02OARCCYUKQA84wognkYB6akzpCD3B1wyRL": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7SAIE43O4bi7yx8f0emqQn068KIb$",
+                    "variable_workflow_02P6995U8MXLK0PAOhewpk7N2C32v253x2x": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7SA67B60zm56jjqWF2JDoBuiZ9WN$",
+                    "variable_workflow_02P6995U8MZ545mIKdG24H62NWnfQKywPXN": "[]",
+                    "variable_workflow_02P6995U8MZWW5WUL3UHuulOntvOFjP7hEx": "[]",
+                    "variable_workflow_02P6995U8N0OO0sEPtXZNVwDrGP71nRSuj0": "",
+                    "variable_workflow_02P6995U8N2881bciyv3EUY6V8PxqZF34SS": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7S9XJG74PhZNazkhgzgZAby4bp9p$",
+                    "variable_workflow_02P6995U8N3002fngacLhcWDw9AqNTdbOdw": "",
+                    "variable_workflow_02P6995U8N3RS3k8u6d92GTuJIkhrTSpUPn": "",
+                    "variable_workflow_02P6995U8N5BC6z8SwLfY1dwn7qIv3Zcj6u": "",
+                    "variable_workflow_02P6995U8N6340DrrZvdzffMDYWovmgsb6a": "",
+                    "variable_workflow_02P6995U8N7MO4E99CsMmYK37enVMSQr0zJ": "",
+                    "variable_workflow_02P6995U8N8EG5ij7oaPDm5PX8nNYCTGvf6": "",
+                    "variable_workflow_02P6995U8N96810L7SrwtnNfFwtJkTbvUns": "",
+                    "variable_workflow_02P6995U8N9Y02F3xTDhyyHYyXxk9YHkLPQ": "",
+                    "variable_workflow_02P6995U8NBHK1Y7XsYTGIOUGzBETVj3dSB": "",
+                    "variable_workflow_02P6995U8NC9C43FFtf1RbyT9Vnmvh0oVCh": "",
+                    "variable_workflow_02P6995U8ND144qkGzCr2gIHZZEUWp9Hs6D": "",
+                    "variable_workflow_02P6995U8NDSW6kUdzIPpoKwV3fEErRA7Vs": ""
+                  },
+                  "runtime_user": {
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "target_type": "meraki.endpoint",
+                    "use_workflow_target": true
+                  },
+                  "workflow_id": "definition_workflow_02OARCCYUKMFC28T8KlubQiGSWkwmhTkiJF",
+                  "workflow_name": "Meraki - Get Network Events"
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_02VPSLINK61EM1bIgPswolhbojCzTnKVU6p",
+            "name": "Parallel Branch",
+            "title": "Get Firmware Updates",
+            "type": "logic.parallel_block",
+            "base_type": "activity",
+            "properties": {
+              "continue_on_failure": false,
+              "display_name": "Get Firmware Updates",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_02VPSLIQ13LO71WBx6ZKJckRyJiLMfJ2P0R",
+                "name": "Meraki - Get Network Firmware Upgrades",
+                "title": "Meraki - Get Network Firmware Upgrades",
+                "type": "workflow.atomic_workflow",
+                "base_type": "subworkflow",
+                "properties": {
+                  "continue_on_failure": false,
+                  "description": "API endpoint is designed to retrieve information about the firmware upgrades available for a specific network. This allows users to check for the latest updates and plan their network maintenance accordingly.\n ",
+                  "display_name": "Meraki - Get Network Firmware Upgrades",
+                  "input": {
+                    "variable_workflow_02LV1H3CNM5T45adfzDFwEeMjrKbmdHd58D": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.local.variable_workflow_02VPSLH7SAIE43O4bi7yx8f0emqQn068KIb$"
+                  },
+                  "runtime_user": {
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "target_type": "meraki.endpoint",
+                    "use_workflow_target": true
+                  },
+                  "workflow_id": "definition_workflow_02LV1H3CNM49K1df7J02ad4wyV6Jv0E23b6",
+                  "workflow_name": "Meraki - Get Network Firmware Upgrades"
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "unique_name": "definition_activity_02VPSLIXFO6S20S0YKkpn3v3nBPzI5OM39z",
+        "name": "Execute Python Script",
+        "title": "Compose output messages",
+        "type": "python3.script",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "description": "Execute Python Script",
+          "display_name": "Compose output messages",
+          "script": "import json\nimport sys\n\n# -------------------------------------------------------------------------\n# 1. HELPER FUNCTIONS\n# -------------------------------------------------------------------------\ndef deep_json_parse(data):\n    if isinstance(data, str):\n        cleaned_str = data.strip()\n        if (cleaned_str.startswith('{') and cleaned_str.endswith('}')) or \\\n           (cleaned_str.startswith('[') and cleaned_str.endswith(']')):\n            try:\n                parsed = json.loads(cleaned_str)\n                return deep_json_parse(parsed)\n            except (ValueError, TypeError):\n                return data\n        return data\n    elif isinstance(data, dict):\n        return {k: deep_json_parse(v) for k, v in data.items()}\n    elif isinstance(data, list):\n        return [deep_json_parse(i) for i in data]\n    return data\n\ndef parse_json_input(raw_input, default_value, var_name=\"Unknown Variable\", parsing_log=[]):\n    if raw_input is None:\n        return default_value\n    if isinstance(raw_input, (list, dict)):\n        return deep_json_parse(raw_input)\n    if isinstance(raw_input, str):\n        if not raw_input.strip() or raw_input == \"Variable not found\" or raw_input == \"None\":\n            return default_value\n        try:\n            outer_data = json.loads(raw_input)\n            return deep_json_parse(outer_data)\n        except json.JSONDecodeError as e:\n            error_msg = f\"❌ <strong>{var_name}</strong> failed to parse. <br><em>Error: {e}</em>\"\n            parsing_log.append(error_msg)\n            return default_value\n    return default_value\n\ndef format_ts(ts_string):\n    if not ts_string: return \"\"\n    s = str(ts_string).replace('Z', '').replace('+0000', '').replace('T', ' ')\n    return f\"{s[:19]} UTC\"\n\ndef pretty_format_val(val):\n    if isinstance(val, (dict, list)): return json.dumps(val, indent=2)\n    return str(val)\n\n# -------------------------------------------------------------------------\n# 2. EXTRACT ORDERED ARGUMENTS (sys.argv)\n# -------------------------------------------------------------------------\nparsing_log = []\n\nraw_alert_input = sys.argv[1] if len(sys.argv) > 1 else None\nraw_cl_str      = sys.argv[2] if len(sys.argv) > 2 else None\nraw_cdp_str     = sys.argv[3] if len(sys.argv) > 3 else None\nraw_avail_str   = sys.argv[4] if len(sys.argv) > 4 else None\nraw_events_str  = sys.argv[5] if len(sys.argv) > 5 else None\nai_summary_raw  = sys.argv[6] if len(sys.argv) > 6 else None\n\nalert_data  = parse_json_input(raw_alert_input, {}, \"Alert Data\", parsing_log)\ncl_data     = parse_json_input(raw_cl_str, [], \"Changelog\", parsing_log)\ncdp_data    = parse_json_input(raw_cdp_str, {}, \"CDP Data\", parsing_log)\navail_data  = parse_json_input(raw_avail_str, [], \"Availability Data\", parsing_log)\nevents_data = parse_json_input(raw_events_str, [], \"Events Data\", parsing_log)\n\n# -------------------------------------------------------------------------\n# 3. ANALYZE STATUS & COMPOSE EMAIL SUBJECT\n# -------------------------------------------------------------------------\ninner_alert_details = alert_data.get('alertData', {})\nresolved_ts_raw = inner_alert_details.get('resolved_at')\nis_resolved = True if resolved_ts_raw else False\n\na_type = alert_data.get('alertType', 'Alert')\na_dev  = alert_data.get('deviceName', 'Unknown Device')\na_net  = alert_data.get('networkName', 'Unknown Network')\n\nif is_resolved:\n    email_subject = f\"✅ [RESOLVED] {a_type} - {a_dev} ({a_net})\"\nelse:\n    email_subject = f\"⚠️ [ALERT] {a_type} - {a_dev} ({a_net})\"\n\n# -------------------------------------------------------------------------\n# 4. STYLES & HTML GENERATION\n# -------------------------------------------------------------------------\nhtml_style = \"\"\"\n<style>\n    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; color: #333; line-height: 1.4; }\n    h2 { color: #00bceb; border-bottom: 2px solid #00bceb; padding-bottom: 5px; margin-top: 25px; margin-bottom: 10px; font-size: 16px; }\n    table { border-collapse: collapse; width: 100%; margin-bottom: 15px; font-size: 11px; }\n    th { background-color: #f2f2f2; text-align: left; padding: 6px; border: 1px solid #ddd; font-weight: bold; }\n    td { padding: 6px; border: 1px solid #ddd; vertical-align: top; }\n    tr:nth-child(even) { background-color: #f9f9f9; }\n    .ai-summary-box { background-color: #f0faff; border: 1px solid #00bceb; border-left: 6px solid #00bceb; padding: 15px; margin: 20px 0; border-radius: 4px; }\n    .ai-summary-header { font-weight: bold; color: #005073; font-size: 14px; margin-bottom: 8px; }\n    .ai-content { font-size: 13px; color: #444; }\n    .alert-box { padding: 15px; margin-bottom: 20px; border-left: 5px solid #ccc; }\n    .alert-title { font-size: 16px; font-weight: bold; margin-bottom: 10px; }\n    .alert-box.error { background-color: #fff0f0; border-left-color: #d9534f; }\n    .alert-box.success { background-color: #f0f9eb; border-left-color: #67c23a; }\n    .btn { background-color: #00bceb; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px; font-size: 12px; display: inline-block; margin-top: 10px;}\n    .change-val { font-family: monospace; font-size: 10px; white-space: pre-wrap; }\n    .timestamp { color: #666; font-size: 11px; white-space: nowrap; }\n</style>\n\"\"\"\n\nemail_parts = [\"<html><head>\", html_style, \"</head><body>\"]\n\n# Alert Recap\nif alert_data:\n    rec_type   = alert_data.get('alertType', 'Unknown Alert')\n    rec_dev    = alert_data.get('deviceName', 'Unknown')\n    rec_net    = alert_data.get('networkName', '')\n    rec_url    = alert_data.get('deviceUrl', '#')\n    start_time = format_ts(alert_data.get('occurredAt', ''))\n\n    box_class   = \"success\" if is_resolved else \"error\"\n    status_text = \"RESOLVED\" if is_resolved else \"ACTIVE ALERT\"\n    icon        = \"✅\" if is_resolved else \"⚠️\"\n\n    email_parts.append(f\"\"\"\n    <div class=\"alert-box {box_class}\">\n        <div class=\"alert-title\">{icon} {status_text}: {rec_type}</div>\n        <table style=\"border:none; background:none; width:auto;\">\n            <tr><td style=\"border:none;\"><strong>Device:</strong></td><td style=\"border:none;\">{rec_dev}</td></tr>\n            <tr><td style=\"border:none;\"><strong>Network:</strong></td><td style=\"border:none;\">{rec_net}</td></tr>\n            <tr><td style=\"border:none;\"><strong>Time:</strong></td><td style=\"border:none;\">{start_time}</td></tr>\n        </table>\n        <a href=\"{rec_url}\" class=\"btn\">View in Dashboard</a>\n    </div>\n    \"\"\")\n\n# AI Summary\nif ai_summary_raw and ai_summary_raw != \"Variable not found\" and ai_summary_raw != \"None\":\n    formatted_summary = str(ai_summary_raw).strip().replace(\"\\n\", \"<br>\")\n    email_parts.append(f\"\"\"\n    <div class=\"ai-summary-box\">\n        <div class=\"ai-summary-header\">✨ AI Analysis Summary</div>\n        <div class=\"ai-content\">{formatted_summary}</div>\n    </div>\n    \"\"\")\n\n# Availability Table\nemail_parts.append(\"<h2>Device Availability History</h2>\")\nif avail_data and isinstance(avail_data, list):\n    email_parts.append(\"<table><thead><tr><th>Time (UTC)</th><th>Device</th><th>Status</th></tr></thead><tbody>\")\n    for item in avail_data:\n        ts   = format_ts(item.get('ts', ''))\n        dev  = item.get('device', {}).get('name', 'Unknown')\n        stat = item.get('details', {}).get('new', [{}])[0].get('value', 'Unknown')\n        email_parts.append(f\"<tr><td class='timestamp'>{ts}</td><td>{dev}</td><td>{stat}</td></tr>\")\n    email_parts.append(\"</tbody></table>\")\nelse:\n    email_parts.append(\"<p class='timestamp'>No availability data.</p>\")\n\n# Changelog Table\nemail_parts.append(\"<h2>Configuration Changelog</h2>\")\nif cl_data and isinstance(cl_data, list):\n    email_parts.append(\"<table><thead><tr><th>Time (UTC)</th><th>Admin</th><th>Label</th><th>Change</th></tr></thead><tbody>\")\n    for item in cl_data:\n        ts    = format_ts(item.get('ts', ''))\n        admin = item.get('adminName', 'Admin')\n        label = item.get('label', '-')\n        old_v = pretty_format_val(item.get('oldValue', ''))\n        new_v = pretty_format_val(item.get('newValue', ''))\n        email_parts.append(f\"<tr><td class='timestamp'>{ts}</td><td>{admin}</td><td>{label}</td><td class='change-val'><span style='color:red'>{old_v}</span> &rarr; <span style='color:green'>{new_v}</span></td></tr>\")\n    email_parts.append(\"</tbody></table>\")\n\n# CDP Table\nemail_parts.append(\"<h2>CDP / LLDP Neighbors</h2>\")\ncdp_ports = cdp_data.get('ports', {}) if isinstance(cdp_data, dict) else {}\nif cdp_ports:\n    email_parts.append(\"<table><thead><tr><th>Interface</th><th>Neighbor System</th><th>Neighbor Port</th><th>Chassis ID</th></tr></thead><tbody>\")\n    for inter, data in cdp_ports.items():\n        lldp = data.get('lldp', {})\n        email_parts.append(f\"<tr><td>{inter}</td><td>{lldp.get('systemName', 'N/A')}</td><td>{lldp.get('portId', 'N/A')}</td><td>{lldp.get('chassisId', 'N/A')}</td></tr>\")\n    email_parts.append(\"</tbody></table>\")\n\n# Events Table\nemail_parts.append(\"<h2>Recent Device Events</h2>\")\nif events_data and isinstance(events_data, list):\n    email_parts.append(\"<table><thead><tr><th>Time (UTC)</th><th>Description</th><th>Type</th></tr></thead><tbody>\")\n    for item in events_data[:10]:\n        ts = format_ts(item.get('occurredAt', ''))\n        email_parts.append(f\"<tr><td class='timestamp'>{ts}</td><td>{item.get('description', '')}</td><td>{item.get('type', '')}</td></tr>\")\n    email_parts.append(\"</tbody></table>\")\n\n# Debugging\nif parsing_log:\n    email_parts.append('<div style=\"background:#fffbe6; border:1px solid #ffe58f; padding:10px; font-size:10px;\">')\n    for log in parsing_log: email_parts.append(f\"<div>{log}</div>\")\n    email_parts.append('</div>')\n\nemail_parts.append(\"</body></html>\")\nemail_body = \"\".join(email_parts)\n\n# -------------------------------------------------------------------------\n# 5. WEBEX PAYLOAD GENERATION\n# -------------------------------------------------------------------------\nwx_parts = []\n\n# Alert Recap\nif alert_data:\n    icon        = \"✅\" if is_resolved else \"⚠️\"\n    status_text = \"RESOLVED\" if is_resolved else \"ACTIVE ALERT\"\n    rec_type    = alert_data.get('alertType', 'Unknown Alert')\n    rec_dev     = alert_data.get('deviceName', 'Unknown')\n    rec_net     = alert_data.get('networkName', '')\n    rec_url     = alert_data.get('deviceUrl', '#')\n    start_time  = format_ts(alert_data.get('occurredAt', ''))\n\n    wx_parts.append(f\"## {icon} {status_text}: {rec_type}\")\n    wx_parts.append(f\"- **Device:** {rec_dev}\")\n    wx_parts.append(f\"- **Network:** {rec_net}\")\n    wx_parts.append(f\"- **Time:** {start_time}\")\n    wx_parts.append(f\"- **Dashboard:** [View Device]({rec_url})\")\n    wx_parts.append(\"\")\n\n# AI Summary\nif ai_summary_raw and ai_summary_raw != \"Variable not found\" and ai_summary_raw != \"None\":\n    formatted_summary_wx = str(ai_summary_raw).strip()\n    wx_parts.append(\"---\")\n    wx_parts.append(\"### ✨ AI Analysis Summary\")\n    wx_parts.append(formatted_summary_wx)\n    wx_parts.append(\"\")\n\n# Availability\nwx_parts.append(\"---\")\nwx_parts.append(\"### 📡 Device Availability History\")\nif avail_data and isinstance(avail_data, list):\n    for item in avail_data:\n        ts   = format_ts(item.get('ts', ''))\n        dev  = item.get('device', {}).get('name', 'Unknown')\n        stat = item.get('details', {}).get('new', [{}])[0].get('value', 'Unknown')\n        wx_parts.append(f\"- **Time:** {ts} | **Device:** {dev} | **Status:** {stat}\")\nelse:\n    wx_parts.append(\"_No availability data._\")\nwx_parts.append(\"\")\n\n# Changelog\nwx_parts.append(\"---\")\nwx_parts.append(\"### 🔧 Configuration Changelog\")\nif cl_data and isinstance(cl_data, list):\n    for item in cl_data:\n        ts    = format_ts(item.get('ts', ''))\n        admin = item.get('adminName', 'Admin')\n        label = item.get('label', '-')\n        old_v = pretty_format_val(item.get('oldValue', '')).replace('\\n', ' ')\n        new_v = pretty_format_val(item.get('newValue', '')).replace('\\n', ' ')\n        wx_parts.append(f\"- **Time:** {ts} | **Admin:** {admin} | **Label:** {label}\")\n        wx_parts.append(f\"  - **Old:** `{old_v}`\")\n        wx_parts.append(f\"  - **New:** `{new_v}`\")\nelse:\n    wx_parts.append(\"_No changelog data._\")\nwx_parts.append(\"\")\n\n# CDP\nwx_parts.append(\"---\")\nwx_parts.append(\"### 🔗 CDP / LLDP Neighbors\")\ncdp_ports = cdp_data.get('ports', {}) if isinstance(cdp_data, dict) else {}\nif cdp_ports:\n    for inter, data in cdp_ports.items():\n        lldp = data.get('lldp', {})\n        wx_parts.append(f\"- **Interface:** {inter} | **Neighbor:** {lldp.get('systemName', 'N/A')} | **Port:** {lldp.get('portId', 'N/A')} | **Chassis:** {lldp.get('chassisId', 'N/A')}\")\nelse:\n    wx_parts.append(\"_No CDP/LLDP neighbor data._\")\nwx_parts.append(\"\")\n\n# Events\nwx_parts.append(\"---\")\nwx_parts.append(\"### 📋 Recent Device Events\")\nif events_data and isinstance(events_data, list):\n    for item in events_data[:10]:\n        ts = format_ts(item.get('occurredAt', ''))\n        wx_parts.append(f\"- **Time:** {ts} | **Type:** {item.get('type', '')} | **Desc:** {item.get('description', '')}\")\nelse:\n    wx_parts.append(\"_No recent events._\")\nwx_parts.append(\"\")\n\n# Debugging\nif parsing_log:\n    wx_parts.append(\"---\")\n    wx_parts.append(\"### ⚠️ Parsing Errors\")\n    for log in parsing_log:\n        clean_log = log.replace('<strong>', '**').replace('</strong>', '**') \\\n                       .replace('<br>', ' ').replace('<em>', '_').replace('</em>', '_')\n        wx_parts.append(f\"- {clean_log}\")\n\nwebex_markdown = \"\\n\".join(wx_parts)\n\n# -------------------------------------------------------------------------\n# 6. OUTPUT\n# -------------------------------------------------------------------------\nprint(email_body)\nprint(webex_markdown)",
+          "script_arguments": [
+            "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.input.variable_workflow_02VPSLH7SAEG7568fRfVoSnLpGYCiq1v2Yf$",
+            "$activity.definition_activity_02VPSLI77HTVJ5OMtc2BZYN4S1iPgMsvtI1.output.variable_workflow_02OARCKD9W0VK1q9foNwStLwoqGueVT5DuT$",
+            "$activity.definition_activity_02VPSLIBWXERE7UzCRRoo7ohQARgpwbh0Ds.output.variable_workflow_02OARC9SOCUX44EaSHpIOJYC4CdvICOBxDI$",
+            "$activity.definition_activity_02VPSLIGJK7HU6We3HWEJ4YeW8zharXDfz7.output.variable_workflow_02OARCKEMTKRS2G3tXZyRHHaJhcJPEa0UBn$",
+            "$activity.definition_activity_02VPSLILKWVW12l8Fixk8WkX1ej1C2GyHWY.output.variable_workflow_02OARCCYUKU5438XVSPpF7VOAV6obhjO0Pq$",
+            "\"\""
+          ],
+          "script_queries": [
+            {
+              "script_query": "email_body",
+              "script_query_name": "email_body",
+              "script_query_type": "string"
+            },
+            {
+              "script_query": "email_subject",
+              "script_query_name": "email_subject",
+              "script_query_type": "string"
+            },
+            {
+              "script_query": "webex_markdown",
+              "script_query_name": "webex_markdown",
+              "script_query_type": "string"
+            }
+          ],
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_02VPSLJ3KJKLL4Y1VxhIIkPvHEjFRliZTbh",
+        "name": "Set Variables",
+        "title": "Set Variables",
+        "type": "core.set_multiple_variables",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "description": "Set Variables",
+          "display_name": "Set Variables",
+          "skip_execution": false,
+          "variables_to_update": [
+            {
+              "variable_to_update": "$workflow.definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C.output.workflow_results$",
+              "variable_value_new": "$activity.definition_activity_02VPSLIXFO6S20S0YKkpn3v3nBPzI5OM39z.output.script_queries.webex_markdown$"
+            }
+          ]
+        },
+        "object_type": "definition_activity"
+      }
+    ],
+    "categories": [
+      "category_02LA3RNX6YL4430HdJs9thJNlUZGnFD8hfg",
+      "category_02VISPBR376QH4AKhlBrjQpaibWNbIjMOi7",
+      "category_02VORXXM4JSDI3qlY7bAxbboSkKaJXSX78L",
+      "category_023LH4IGMVAXS5XVIIgBdAsca9QtC71wKk7",
+      "category_024TS3XB5CE1D6sGxxGUpb1U03KChYjobUb"
+    ],
+    "template_type": "template_workflow.workflow_with_automation_rule"
+  },
+  "categories": {
+    "category_02VISPBR376QH4AKhlBrjQpaibWNbIjMOi7": {
+      "unique_name": "category_02VISPBR376QH4AKhlBrjQpaibWNbIjMOi7",
+      "name": "Demo workflows",
+      "title": "Demo workflows",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    },
+    "category_02VORXXM4JSDI3qlY7bAxbboSkKaJXSX78L": {
+      "unique_name": "category_02VORXXM4JSDI3qlY7bAxbboSkKaJXSX78L",
+      "name": "EIS Demos",
+      "title": "EIS Demos",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  },
+  "rules": {
+    "ruleevent_02TQBVQ75ZNQN0RzhBk7gigeDvpb4ljdKQu": {
+      "name": "Catch Device \"unreachable\"",
+      "title": "Catch Device \"unreachable\"",
+      "type": "webhook.rule_event",
+      "rule_type": "rule_event",
+      "base_type": "rule",
+      "object_type": "ruleevent",
+      "version": "1.0.0",
+      "properties": {
+        "conditions": {
+          "left_operand": "$output.request_body$",
+          "operator": "mregex",
+          "right_operand": "{\"alertData\":{\"alert_type\":\"unreachable\",\"category_type\":\"connectivity\",.*"
+        },
+        "description": "",
+        "disabled": false,
+        "display_name": "Catch Device \"unreachable\"",
+        "group_by": false,
+        "rule_type": "rule_event",
+        "title": "Catch Device \"unreachable\"",
+        "webhook_id": "webhook_02TQBV9D6TOCO2jITo44Hl0oe7irFQkDlws",
+        "workflows_config": [
+          {
+            "disabled": false,
+            "ref_id": "definition_workflow_02VPSLH78RFHX3RMdZDcO96SqRk7qW9fd7C",
+            "wf_input_variables": {
+              "variable_workflow_02VPSLH7S9A0C6edKzD2CJaia3MzD2jvleS": 43200,
+              "variable_workflow_02VPSLH7S9NX23tRM3NdDRtYUK8hcGophRG": 1200,
+              "variable_workflow_02VPSLH7SAEG7568fRfVoSnLpGYCiq1v2Yf": "$rule.webhook rule_event.output.request_body$"
+            },
+            "status": {
+              "state": "started-polling",
+              "prev_state": "started-polling",
+              "error_msg": ""
+            }
+          }
+        ]
+      },
+      "disabled": false,
+      "unique_name": "ruleevent_02TQBVQ75ZNQN0RzhBk7gigeDvpb4ljdKQu"
+    }
+  },
+  "atomic_workflows": [
+    "definition_workflow_02LBZJE7PQZVJ3crE33ELBrscM7zWeiugTw",
+    "definition_workflow_02OARCKD9VRM83izy3wJ19rTPd9wMVeYCKm",
+    "definition_workflow_02OARC9SOCK487adxf3WF1CX4b1EgV0XChp",
+    "definition_workflow_02OARCKEMTDTS6N2upncyP1MEkDymC0Cmu9",
+    "definition_workflow_02OARCCYUKMFC28T8KlubQiGSWkwmhTkiJF",
+    "definition_workflow_02LV1H3CNM49K1df7J02ad4wyV6Jv0E23b6"
+  ],
+  "webhooks": {
+    "webhook_02TQBV9D6TOCO2jITo44Hl0oe7irFQkDlws": {
+      "name": "Device Unreachable Webhook",
+      "title": "Device Unreachable Webhook",
+      "type": "generic.webhook",
+      "base_type": "webhook",
+      "object_type": "webhook",
+      "version": "1.0.0",
+      "properties": {
+        "display_name": "Device Unreachable Webhook",
+        "request_content_type": "application/json"
+      },
+      "unique_name": "webhook_02TQBV9D6TOCO2jITo44Hl0oe7irFQkDlws",
+      "expires_on": "2027-05-18T13:58:02.406Z"
+    }
+  },
+  "dependent_workflows": [
+    "definition_workflow_02LBZJE7PQZVJ3crE33ELBrscM7zWeiugTw",
+    "definition_workflow_02OARCKD9VRM83izy3wJ19rTPd9wMVeYCKm",
+    "definition_workflow_02OARC9SOCK487adxf3WF1CX4b1EgV0XChp",
+    "definition_workflow_02OARCKEMTDTS6N2upncyP1MEkDymC0Cmu9",
+    "definition_workflow_02OARCCYUKMFC28T8KlubQiGSWkwmhTkiJF",
+    "definition_workflow_02LV1H3CNM49K1df7J02ad4wyV6Jv0E23b6"
+  ],
+  "module_targets": [
+    {
+      "module_type": "Meraki Endpoint",
+      "external_id": "securex:ao:meraki_workflows",
+      "proxy_endpoint_metadata_id": "meraki-platform-apis"
+    }
+  ]
+}

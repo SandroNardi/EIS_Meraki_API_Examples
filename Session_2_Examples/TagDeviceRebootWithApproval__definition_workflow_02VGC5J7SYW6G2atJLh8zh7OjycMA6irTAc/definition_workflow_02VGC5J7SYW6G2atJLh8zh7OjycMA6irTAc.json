@@ -1,0 +1,923 @@
+{
+  "workflow": {
+    "unique_name": "definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc",
+    "name": "Meraki - Reboot Devices with Approval",
+    "title": "Meraki - Reboot Devices with Approval",
+    "type": "generic.workflow",
+    "base_type": "workflow",
+    "variables": [
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "[]",
+          "scope": "local",
+          "name": "Local - Network IDs JSON",
+          "type": "datatype.string",
+          "description": "JSON string of resolved network IDs",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VGC5J7T0VA63V2wxKBoIlcX9GS38HY3GC",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Local - Current Status",
+          "type": "datatype.string",
+          "description": "Status of device currently being processed",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VGC5J7T1M0A4PiWOuep9EPk9jbRZTKMXp",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Local - Current Name",
+          "type": "datatype.string",
+          "description": "Name of device currently being processed",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VGC5J7T1GRH0erBxMrhPFpZtFbdYYMNxA",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "variable_type_array_01JhSTW61I3ZU2IfL7dwQox83eFDzE1qUiA",
+        "properties": {
+          "value": [],
+          "scope": "local",
+          "name": "Local - Network IDs Array",
+          "type": "datatype.array",
+          "description": "Array of resolved network IDs",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VGC5J7T10LJ3fFxTPvPz88pDSyRHTLh7Q",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "Success",
+          "scope": "output",
+          "name": "Output - Status",
+          "type": "datatype.string",
+          "description": "Workflow execution status",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VGC5J7T0E5Y6HSZs94KeT6KH2mWjYJLUX",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "Output - Reboot Report",
+          "type": "datatype.string",
+          "description": "Summary of reboot operations and device statuses",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VGC5J7T0JN90xVcR2HD6hcRPY4mfPoQvj",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "local",
+          "name": "Local - Current Serial",
+          "type": "datatype.string",
+          "description": "Serial of device currently being processed",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VGC5J7T1BDI7LVeIoDcG8EmyEkKxpQvLl",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "[]",
+          "scope": "local",
+          "name": "Local - Reboot Results JSON",
+          "type": "datatype.string",
+          "description": "Accumulated reboot results",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VGC5J7T15QG6fz4EXGeVJDHETCvspJekf",
+        "object_type": "variable_workflow"
+      },
+      {
+        "schema_id": "datatype.string",
+        "properties": {
+          "value": "",
+          "scope": "output",
+          "name": "Output - Error Message",
+          "type": "datatype.string",
+          "description": "Error message if workflow fails",
+          "is_required": false,
+          "display_on_wizard": false,
+          "is_invisible": false,
+          "variable_string_format": ""
+        },
+        "unique_name": "variable_workflow_02VGC5J7T0PA03DgEdjjd0vKkEBILtrgJmJ",
+        "object_type": "variable_workflow"
+      }
+    ],
+    "properties": {
+      "atomic": {
+        "is_atomic": false
+      },
+      "delete_workflow_instance": false,
+      "description": "Retrieves Meraki devices based on serials, tags, or network names, requests administrative approval, and reboots approved devices while compiling a status report.",
+      "display_name": "Meraki - Reboot Devices with Approval",
+      "runtime_user": {
+        "override_target_runtime_user": false,
+        "specify_on_workflow_start": false,
+        "target_default": true
+      },
+      "target": {
+        "target_type": "meraki.endpoint",
+        "target_id": "$module_target;Meraki Endpoint;securex:ao:meraki_workflows;meraki-platform-apis$",
+        "execute_on_workflow_target": true
+      }
+    },
+    "object_type": "definition_workflow",
+    "actions": [
+      {
+        "unique_name": "definition_activity_02VGF13SB37LW2cCqskZ6GUOGJn4FyB7QEq",
+        "name": "Meraki - Get Organizations",
+        "title": "Meraki - Get Organizations",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "atomic": {
+            "atomic_group": "Cisco Meraki",
+            "atomic_subgroup": "Organizations"
+          },
+          "description": "**Cisco Meraki - Get Organizations**\nRetrieve a list of organizations that the authenticated user has access to within their Meraki account. \nAn organization in Meraki represents a logical grouping of networks, devices, and settings that can be managed collectively.\n\n**Target:** A Meraki Endpoint using HTTPS \"api.meraki.com\" port 443 and no path.\n\n**Account Key:** Meraki User API Key. API Key can be generated from Meraki Dashboard -> User Profile -> API Access.",
+          "display_name": "Meraki - Get Organizations",
+          "input": {
+            "variable_workflow_02LXK9KUOD0MH4qj4j062vm12gYmFb9y5N0": 100,
+            "variable_workflow_02LXKBG6HGMSD1YojnHQ3bM2cT6mP8A02A9": "",
+            "variable_workflow_02LXKCCX4AREX6odSHkvY5oECunJtqcLahK": ""
+          },
+          "runtime_user": {
+            "target_default": true
+          },
+          "target": {
+            "target_type": "meraki.endpoint",
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_02LV5GIDUTY3X0WhuidM5ZWhkjL8wQCGAPq",
+          "workflow_name": "Meraki - Get Organizations"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_02VGF2MR1552G6V74ymNbhMxQRtJmqGYTS9",
+        "name": "JSONPath Query",
+        "title": "JSONPath Query",
+        "type": "corejava.jsonpathquery",
+        "base_type": "activity",
+        "properties": {
+          "action_timeout": 180,
+          "continue_on_failure": false,
+          "description": "JSONPath Query to get value in JSON",
+          "display_name": "JSONPath Query",
+          "input_json": "$activity.definition_activity_02VGF13SB37LW2cCqskZ6GUOGJn4FyB7QEq.output.variable_workflow_02LXKZA6725S35QBWMZCg1AlZnT11mbSFQi$",
+          "jsonpath_queries": [
+            {
+              "default_value": "",
+              "jsonpath_query": "$[0].id",
+              "jsonpath_query_name": "this_org",
+              "jsonpath_query_type": "string",
+              "set_default_value": false,
+              "zdate_type_format": "yyyy-MM-dd'T'HH:mm:ssZ"
+            }
+          ],
+          "skip_execution": false
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_02VGC5J7T1SVO6w0QzzZZhBrkpfEk1d5z1A",
+        "name": "Get Organization Networks",
+        "title": "Get Organization Networks",
+        "type": "workflow.atomic_workflow",
+        "base_type": "subworkflow",
+        "properties": {
+          "continue_on_failure": true,
+          "description": "**Cisco Meraki - Networks - Get Organization Networks**\n\nList the networks that the user has privileges on in an organization\n\n**Target:** A Meraki Endpoint using HTTPS \"api.meraki.com\" port 443 and no path.\n\n**Account Key:** Meraki User API Key. API Key can be generated from Meraki Dashboard -> User Profile -> API Access.\n\nSteps:\n[] Sends Get Network request to Meraki\n[] Check if the request was successful:\n[]> If it was, attempt to extract the results and set the output variables\n[]> If it wasn't, return the error and marks the workflow as failed.\n\nNOTE: Empty attributes in the request are removed from the payload before sending to Meraki. \n\nMore information about this API: https://developer.cisco.com/meraki/api-v1/get-organization-networks/",
+          "display_name": "Get Organization Networks",
+          "input": {
+            "variable_workflow_02L9TZH6C81473IDtFQ0NIzW3jmXrgchtN9": "$activity.definition_activity_02VGF2MR1552G6V74ymNbhMxQRtJmqGYTS9.output.jsonpath_queries.this_org$",
+            "variable_workflow_02LEUL5GOHN9T53T7jFQx3T2Yo04p5Xuz0r": false,
+            "variable_workflow_02LNK5WW0RD2A20mG7v1G7gsyE2N2RrKdQd": "",
+            "variable_workflow_02LNK5WW0RTCB1AXbOwJOBVWvUx1wdyKtkt": "withAnyTags",
+            "variable_workflow_02LNK5WW0S5E21Q9biFSXTiLbHr7cWP2K7y": "",
+            "variable_workflow_02LNK5WW0SE2H1zmchhUHyfX7L0XGvKmB7W": 1000,
+            "variable_workflow_02LNK5WW0SM7R5SjIvnnytN6vYzR7wfDHeE": [],
+            "variable_workflow_02LNK5WW0STMX38BXiY2IvPQoHQliJHSCgE": [],
+            "variable_workflow_02LNK5WW0T0NX26NyApdlTn355uYJwcQGqW": "",
+            "variable_workflow_02LNK5WW0T92U1HJd1sxzFrmVvwxy7NVaQn": ""
+          },
+          "runtime_user": {
+            "target_default": true
+          },
+          "skip_execution": false,
+          "target": {
+            "target_type": "meraki.endpoint",
+            "use_workflow_target": true
+          },
+          "workflow_id": "definition_workflow_02L9TZH5W95870XebPF2g8kSyIYcawUvljX",
+          "workflow_name": "Meraki - Get Organization Networks"
+        },
+        "object_type": "definition_activity"
+      },
+      {
+        "unique_name": "definition_activity_02VGC5J7T1YTX1yZBE00O8uoEMkgpfLMlcx",
+        "name": "Check Get Networks Status",
+        "title": "Check Get Networks Status",
+        "type": "logic.if_else",
+        "base_type": "activity",
+        "properties": {
+          "continue_on_failure": false,
+          "display_name": "Check Get Networks Status",
+          "skip_execution": false
+        },
+        "object_type": "definition_activity",
+        "blocks": [
+          {
+            "unique_name": "definition_activity_02VGC5J7T25286giWDWtey9B6B6EQDVIPUR",
+            "name": "Success",
+            "title": "Success",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_02VGC5J7T1SVO6w0QzzZZhBrkpfEk1d5z1A.output.variable_workflow_02L9TZH6C9HVU3eHnLNP91ZKEfJOnaYpBsh$",
+                "operator": "eq",
+                "right_operand": "200"
+              },
+              "continue_on_failure": false,
+              "display_name": "Success",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_02VGC5J7T2X6E2yZPx8ORVdbRTU5nkMZEQJ",
+                "name": "Get Organization All Devices",
+                "title": "Get Organization All Devices",
+                "type": "workflow.atomic_workflow",
+                "base_type": "subworkflow",
+                "properties": {
+                  "continue_on_failure": true,
+                  "description": "**Cisco Meraki - Devices - Get Organization Devices**\n\nList the devices in an organization that have been assigned to networks.\n\n**Target:** A Meraki Endpoint using HTTPS \"api.meraki.com\" port 443 and no path.\n\n**Account Key:** Meraki User API Key. API Key can be generated from Meraki Dashboard -> User Profile -> API Access.\n\nSteps:\n[] Sends Get Network request to Meraki\n[] Check if the request was successful:\n[]> If it was, attempt to extract the results and set the output variables\n[]> If it wasn't, return the error and marks the workflow as failed.\n\nNOTE: Empty attributes in the request are removed from the payload before sending to Meraki. \n\nMore information about this API: https://developer.cisco.com/meraki/api-v1/get-organization-networks/",
+                  "display_name": "Get Organization All Devices",
+                  "input": {
+                    "variable_workflow_02LBZJE84MKWU3b4u5iWvF5C56j3SWvcLxU": "$activity.definition_activity_02VGF2MR1552G6V74ymNbhMxQRtJmqGYTS9.output.jsonpath_queries.this_org$",
+                    "variable_workflow_02LPD34ABGELX4xRBULzEWn7yZXmlOLnhlm": "",
+                    "variable_workflow_02LPD34ABGWM530L7Ref10RR1lIyS6swy7y": "",
+                    "variable_workflow_02LPD34ABH4NB5Y3srIX91xn9cIzEY68MMa": "withAnyTags",
+                    "variable_workflow_02LPD34ABHCES6OHeiXWIvVmRKLdKquVK4f": [],
+                    "variable_workflow_02LPD34ABHKTT7bzR3DO9wR6Jt8QIVkTmKA": [],
+                    "variable_workflow_02LPD34ABHUR66qxroFyemfNTX3wjVrx4bB": "",
+                    "variable_workflow_02LPD34ABI5767Bipcwnil1zhzAhMVqXU77": "",
+                    "variable_workflow_02LPD34ABICWG2rq68sl7VROvFjqB8bmooh": [],
+                    "variable_workflow_02LPD34ABIJYH3MHQNXX88Tf38tgg2nnaiV": [],
+                    "variable_workflow_02LPD34ABIRIY7ksRBfahOf52zARKfji5tq": "",
+                    "variable_workflow_02LPD34ABIZNM1hpRmCW4fNi50a79mCW4oF": 1000,
+                    "variable_workflow_02LPD34ABJ73Y1vUpFZq8UjZK37FVXisvfT": "",
+                    "variable_workflow_02LPD34ABJFEJ26DNauhcFei0QIVgWIgCYw": [],
+                    "variable_workflow_02LPD34ABJV2C0tJTsG5KJNoU4RZ9yRWNBC": [],
+                    "variable_workflow_02LPD34ABK6IH5MaynNsHWnm1mpCQw0TkyQ": [],
+                    "variable_workflow_02LPD34ABKF695YGotxETEugS06mLWBlnVr": [],
+                    "variable_workflow_02LPD34ABKNYC53bhvdbdyJKVnk3JPbMbDL": ""
+                  },
+                  "runtime_user": {
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "target_type": "meraki.endpoint",
+                    "use_workflow_target": true
+                  },
+                  "workflow_id": "definition_workflow_02LBZJE7PQZVJ3crE33ELBrscM7zWeiugTw",
+                  "workflow_name": "Meraki - Get Organization Devices"
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_02VGH6J93LZMR4OEy7ImE0XjLcHLr0Q2Iwk",
+                "name": "Execute Python Script",
+                "title": "Execute Python Script",
+                "type": "python3.script",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": false,
+                  "description": "Execute Python Script",
+                  "display_name": "Execute Python Script",
+                  "script": "import sys\nimport json\nfrom typing import Any, Dict, List\n\nresult: List[str] = []\n\n\ndef get_unique_tags(access_points: List[Dict[str, Any]]) -> List[str]:\n    seen = set()\n    unique_tags = []\n\n    for ap in access_points:\n        tags = ap.get(\"tags\", [])\n        if isinstance(tags, list):\n            for tag in tags:\n                if isinstance(tag, str) and tag not in seen:\n                    seen.add(tag)\n                    unique_tags.append(tag)\n\n    return unique_tags\n\n\nif len(sys.argv) < 2:\n    raise ValueError(\"Please pass the JSON array as the first argument.\")\n\ninput_data = json.loads(sys.argv[1])\nresult = get_unique_tags(input_data)",
+                  "script_arguments": [
+                    "$activity.definition_activity_02VGC5J7T2X6E2yZPx8ORVdbRTU5nkMZEQJ.output.variable_workflow_02LBZJE84NB1F75jMCnZjaIsHHmn1NBoO2y$"
+                  ],
+                  "script_queries": [
+                    {
+                      "script_query": "result",
+                      "script_query_name": "tags_array",
+                      "script_query_type": "array"
+                    }
+                  ],
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_02VGHGRQ7UIBU2Zx4huOVj41TVsybdShu7i",
+                "name": "Create Prompt",
+                "title": "Create Prompt",
+                "type": "task.prompt_request",
+                "base_type": "activity",
+                "properties": {
+                  "assignee_roles": [
+                    "admin"
+                  ],
+                  "assignees": [
+                    "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.output.started_by$"
+                  ],
+                  "continue_on_failure": false,
+                  "description": "Create Prompt Request",
+                  "display_name": "Create Prompt",
+                  "expiration_date": {
+                    "is_relative_time": true,
+                    "relative_time": {
+                      "duration": 72,
+                      "time_units": "hours"
+                    }
+                  },
+                  "form_elements": [
+                    {
+                      "allow_multiselect": true,
+                      "form_element": "select",
+                      "form_label": "Device Tags",
+                      "form_option_label_key": "",
+                      "form_source_array": "$activity.definition_activity_02VGH6J93LZMR4OEy7ImE0XjLcHLr0Q2Iwk.output.script_queries.tags_array$"
+                    }
+                  ],
+                  "prompt_body": "Select device tags to reboot",
+                  "prompt_title": "Select device tags to reboot",
+                  "skip_execution": false,
+                  "task_owner": "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.output.started_by$",
+                  "task_requestor": "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.output.started_by$",
+                  "wait_for_prompt_response": true
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_02VGHJ8XVA84M7U79RGb9XFdV9kgKqh94k6",
+                "name": "Get Organization Devices by TAG",
+                "title": "Get Organization Devices by TAG",
+                "type": "workflow.atomic_workflow",
+                "base_type": "subworkflow",
+                "properties": {
+                  "continue_on_failure": true,
+                  "description": "**Cisco Meraki - Devices - Get Organization Devices**\n\nList the devices in an organization that have been assigned to networks.\n\n**Target:** A Meraki Endpoint using HTTPS \"api.meraki.com\" port 443 and no path.\n\n**Account Key:** Meraki User API Key. API Key can be generated from Meraki Dashboard -> User Profile -> API Access.\n\nSteps:\n[] Sends Get Network request to Meraki\n[] Check if the request was successful:\n[]> If it was, attempt to extract the results and set the output variables\n[]> If it wasn't, return the error and marks the workflow as failed.\n\nNOTE: Empty attributes in the request are removed from the payload before sending to Meraki. \n\nMore information about this API: https://developer.cisco.com/meraki/api-v1/get-organization-networks/",
+                  "display_name": "Get Organization Devices by TAG",
+                  "input": {
+                    "variable_workflow_02LBZJE84MKWU3b4u5iWvF5C56j3SWvcLxU": "$activity.definition_activity_02VGF2MR1552G6V74ymNbhMxQRtJmqGYTS9.output.jsonpath_queries.this_org$",
+                    "variable_workflow_02LPD34ABGELX4xRBULzEWn7yZXmlOLnhlm": "",
+                    "variable_workflow_02LPD34ABGWM530L7Ref10RR1lIyS6swy7y": "",
+                    "variable_workflow_02LPD34ABH4NB5Y3srIX91xn9cIzEY68MMa": "withAnyTags",
+                    "variable_workflow_02LPD34ABHCES6OHeiXWIvVmRKLdKquVK4f": [],
+                    "variable_workflow_02LPD34ABHKTT7bzR3DO9wR6Jt8QIVkTmKA": [],
+                    "variable_workflow_02LPD34ABHUR66qxroFyemfNTX3wjVrx4bB": "",
+                    "variable_workflow_02LPD34ABI5767Bipcwnil1zhzAhMVqXU77": "",
+                    "variable_workflow_02LPD34ABICWG2rq68sl7VROvFjqB8bmooh": [],
+                    "variable_workflow_02LPD34ABIJYH3MHQNXX88Tf38tgg2nnaiV": [],
+                    "variable_workflow_02LPD34ABIRIY7ksRBfahOf52zARKfji5tq": "",
+                    "variable_workflow_02LPD34ABIZNM1hpRmCW4fNi50a79mCW4oF": 1000,
+                    "variable_workflow_02LPD34ABJ73Y1vUpFZq8UjZK37FVXisvfT": "",
+                    "variable_workflow_02LPD34ABJFEJ26DNauhcFei0QIVgWIgCYw": "$activity.definition_activity_02VGHGRQ7UIBU2Zx4huOVj41TVsybdShu7i.output.prompt_response.Device Tags$",
+                    "variable_workflow_02LPD34ABJV2C0tJTsG5KJNoU4RZ9yRWNBC": [],
+                    "variable_workflow_02LPD34ABK6IH5MaynNsHWnm1mpCQw0TkyQ": [],
+                    "variable_workflow_02LPD34ABKF695YGotxETEugS06mLWBlnVr": [],
+                    "variable_workflow_02LPD34ABKNYC53bhvdbdyJKVnk3JPbMbDL": ""
+                  },
+                  "runtime_user": {
+                    "target_default": true
+                  },
+                  "skip_execution": false,
+                  "target": {
+                    "target_type": "meraki.endpoint",
+                    "use_workflow_target": true
+                  },
+                  "workflow_id": "definition_workflow_02LBZJE7PQZVJ3crE33ELBrscM7zWeiugTw",
+                  "workflow_name": "Meraki - Get Organization Devices"
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_02VGC5J7T32VT1PRwE8K9bPg2wi91iKx3sI",
+                "name": "Check Get Devices Status",
+                "title": "Check Get Devices Status",
+                "type": "logic.if_else",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Check Get Devices Status",
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity",
+                "blocks": [
+                  {
+                    "unique_name": "definition_activity_02VGC5J7T38GI6b4JdFymP6l22F80FoKQjt",
+                    "name": "Success",
+                    "title": "Success",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": "$activity.definition_activity_02VGC5J7T2X6E2yZPx8ORVdbRTU5nkMZEQJ.output.variable_workflow_02LBZJE84NJ0B1AzISl1F4NTWvukjqqB9Av$",
+                        "operator": "eq",
+                        "right_operand": "200"
+                      },
+                      "continue_on_failure": false,
+                      "display_name": "Success",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_02VGC5J7T3PH261xW0pokBt85einafuEho2",
+                        "name": "Read Devices Table",
+                        "title": "Read Devices Table",
+                        "type": "corejava.read_table_from_json",
+                        "base_type": "activity",
+                        "properties": {
+                          "action_timeout": 180,
+                          "continue_on_failure": false,
+                          "display_name": "Read Devices Table",
+                          "input_json": "$activity.definition_activity_02VGHJ8XVA84M7U79RGb9XFdV9kgKqh94k6.output.variable_workflow_02LBZJE84NB1F75jMCnZjaIsHHmn1NBoO2y$",
+                          "jsonpath_query": "$",
+                          "persist_output": false,
+                          "populate_columns": false,
+                          "skip_execution": false,
+                          "table_columns": [
+                            {
+                              "column_name": "serial",
+                              "column_type": "string"
+                            },
+                            {
+                              "column_name": "name",
+                              "column_type": "string"
+                            }
+                          ]
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_02VGHQ43E12VD5F3FMXhvChljQRHbfaQ7h9",
+                        "name": "Execute Python Script",
+                        "title": "prompt message",
+                        "type": "python3.script",
+                        "base_type": "activity",
+                        "properties": {
+                          "action_timeout": 180,
+                          "continue_on_failure": false,
+                          "description": "Execute Python Script",
+                          "display_name": "prompt message",
+                          "script": "import sys\nimport json\nfrom typing import Any, Dict, List\n\noutput = \"\"\n\n\ndef to_markdown_table(rows: List[Dict[str, Any]]) -> str:\n    if not isinstance(rows, list):\n        raise ValueError(\"Input must be a JSON array.\")\n\n    if not rows:\n        return \"\"\n\n    columns = []\n    seen = set()\n\n    for row in rows:\n        if not isinstance(row, dict):\n            raise ValueError(\"Each item in the array must be an object.\")\n        for key in row.keys():\n            if key not in seen:\n                seen.add(key)\n                columns.append(key)\n\n    def format_value(value: Any) -> str:\n        if value is None:\n            return \"\"\n        if isinstance(value, (dict, list)):\n            text = json.dumps(value, ensure_ascii=False)\n        else:\n            text = str(value)\n        return text.replace(\"|\", \"\\\\|\").replace(\"\\n\", \"<br>\")\n\n    header = \"| \" + \" | \".join(columns) + \" |\"\n    separator = \"| \" + \" | \".join([\"---\"] * len(columns)) + \" |\"\n    body = [\n        \"| \" + \" | \".join(format_value(row.get(column, \"\")) for column in columns) + \" |\"\n        for row in rows\n    ]\n\n    return \"\\n\".join([header, separator] + body)\n\n\nif len(sys.argv) < 2:\n    raise ValueError(\"Please pass the JSON array as the first argument.\")\n\ninput_data = json.loads(sys.argv[1])\noutput = to_markdown_table(input_data)",
+                          "script_arguments": [
+                            "$activity.definition_activity_02VGC5J7T3PH261xW0pokBt85einafuEho2.output.response_body$"
+                          ],
+                          "script_queries": [
+                            {
+                              "script_query": "output",
+                              "script_query_name": "prompt_table",
+                              "script_query_type": "string"
+                            }
+                          ],
+                          "skip_execution": false
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_02VGCDP9GG4WS7mo4j7MJH7BF80iaQbNtRr",
+                        "name": "Request Approval",
+                        "title": "Request Approval",
+                        "type": "task.request_approval",
+                        "base_type": "activity",
+                        "properties": {
+                          "approval_choices_holder": {
+                            "approval_choices": [
+                              "Approve",
+                              "Reject"
+                            ],
+                            "is_custom_approval_choices": false,
+                            "is_default_approval_choices": true
+                          },
+                          "approval_title": "Approve Device Reboot",
+                          "assignee_roles": [
+                            "admin"
+                          ],
+                          "body_text": "$activity.definition_activity_02VGHQ43E12VD5F3FMXhvChljQRHbfaQ7h9.output.script_queries.prompt_table$",
+                          "continue_on_failure": false,
+                          "description": "Request Approval",
+                          "display_name": "Request Approval",
+                          "due_date": {
+                            "is_relative_time": true,
+                            "relative_time": {
+                              "duration": 72,
+                              "time_units": "hours"
+                            },
+                            "set_due_date": true
+                          },
+                          "expiration_date": {
+                            "is_relative_time": true,
+                            "relative_time": {
+                              "duration": 72,
+                              "time_units": "hours"
+                            }
+                          },
+                          "expiration_status": "Expired",
+                          "minimum_approvals": 1,
+                          "priority": "normal",
+                          "skip_execution": false,
+                          "task_owner": "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.output.started_by$",
+                          "task_requestor": "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.output.started_by$",
+                          "wait_for_request_approval_response": true
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_02VGC5J7T3E9N17oOHLrqKjaUbRcFCqm1fj",
+                        "name": "Approval to Reboot Devices",
+                        "title": "Approval to Reboot Devices",
+                        "type": "logic.if_else",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Approval to Reboot Devices",
+                          "skip_execution": false
+                        },
+                        "object_type": "definition_activity",
+                        "blocks": [
+                          {
+                            "unique_name": "definition_activity_02VGC5J7T3JXA6uiHBq2awpl2hK1MreJmuE",
+                            "name": "Approved",
+                            "title": "Approved",
+                            "type": "logic.condition_block",
+                            "base_type": "activity",
+                            "properties": {
+                              "condition": {
+                                "left_operand": "$activity.definition_activity_02VGCDP9GG4WS7mo4j7MJH7BF80iaQbNtRr.output.response$",
+                                "operator": "eq",
+                                "right_operand": "Approve"
+                              },
+                              "continue_on_failure": false,
+                              "display_name": "Approved",
+                              "skip_execution": false
+                            },
+                            "object_type": "definition_activity",
+                            "actions": [
+                              {
+                                "unique_name": "definition_activity_02VGC5J7T3USP2dGyqKasgsYAplI5kLrfob",
+                                "name": "Process Approved Devices",
+                                "title": "Process Approved Devices",
+                                "type": "logic.for_each",
+                                "base_type": "activity",
+                                "properties": {
+                                  "continue_on_failure": false,
+                                  "display_name": "Process Approved Devices",
+                                  "skip_execution": false,
+                                  "source_array": "$activity.definition_activity_02VGC5J7T3PH261xW0pokBt85einafuEho2.output.read_table_from_json$"
+                                },
+                                "object_type": "definition_activity",
+                                "actions": [
+                                  {
+                                    "unique_name": "definition_activity_02VGC5J7T40ES2ThiPi9pjgc60YayTvraWM",
+                                    "name": "Set Current Device Info",
+                                    "title": "Set Current Device Info",
+                                    "type": "core.set_multiple_variables",
+                                    "base_type": "activity",
+                                    "properties": {
+                                      "continue_on_failure": false,
+                                      "display_name": "Set Current Device Info",
+                                      "skip_execution": false,
+                                      "variables_to_update": [
+                                        {
+                                          "variable_to_update": "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.local.variable_workflow_02VGC5J7T1BDI7LVeIoDcG8EmyEkKxpQvLl$",
+                                          "variable_value_new": "$activity.definition_activity_02VGC5J7T3USP2dGyqKasgsYAplI5kLrfob.input.source_array[@].serial$"
+                                        },
+                                        {
+                                          "variable_to_update": "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.local.variable_workflow_02VGC5J7T1GRH0erBxMrhPFpZtFbdYYMNxA$",
+                                          "variable_value_new": "$activity.definition_activity_02VGC5J7T3USP2dGyqKasgsYAplI5kLrfob.input.source_array[@].name$"
+                                        }
+                                      ]
+                                    },
+                                    "object_type": "definition_activity"
+                                  },
+                                  {
+                                    "unique_name": "definition_activity_02VGC5J7T4D1X1RsykWE9qRBdXs9PnCqmpL",
+                                    "name": "Reboot Device",
+                                    "title": "Reboot Device",
+                                    "type": "workflow.atomic_workflow",
+                                    "base_type": "subworkflow",
+                                    "properties": {
+                                      "continue_on_failure": true,
+                                      "description": "Reboot a device. This endpoint has a sustained rate limit of one request every 60 seconds.",
+                                      "display_name": "Reboot Device",
+                                      "input": {
+                                        "variable_workflow_02OARC9VFXV3S6pCjRsfVwe0lN0PRJ7ZDIj": "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.local.variable_workflow_02VGC5J7T1BDI7LVeIoDcG8EmyEkKxpQvLl$",
+                                        "variable_workflow_02OARC9VFXVVK5rH8nK7Y80l68yNUQEC3a4": false
+                                      },
+                                      "runtime_user": {
+                                        "target_default": true
+                                      },
+                                      "skip_execution": false,
+                                      "target": {
+                                        "target_type": "meraki.endpoint",
+                                        "use_workflow_target": true
+                                      },
+                                      "workflow_id": "definition_workflow_02OARC9VFXQH45U5Zv3feLk0TRwaztZwzyi",
+                                      "workflow_name": "Meraki - Reboot Device"
+                                    },
+                                    "object_type": "definition_activity"
+                                  },
+                                  {
+                                    "unique_name": "definition_activity_02VGC5J7T4LMO50YrmKzPMxU1H1KAweDBr5",
+                                    "name": "Record Result",
+                                    "title": "Record Result",
+                                    "type": "python3.script",
+                                    "base_type": "activity",
+                                    "properties": {
+                                      "action_timeout": 180,
+                                      "continue_on_failure": false,
+                                      "display_name": "Record Result",
+                                      "script": "import sys\nimport json\n\nresults = json.loads(sys.argv[1]) if sys.argv[1] else []\nserial = sys.argv[2]\nname = sys.argv[3]\nstatus_code = sys.argv[4]\n\nstatus = \"Success\" if status_code == \"202\" else f\"Failed ({status_code})\"\n\nresults.append({\n    \"serial\": serial,\n    \"name\": name,\n    \"status\": status\n})\n\nresult_json = json.dumps(results)\n",
+                                      "script_arguments": [
+                                        "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.local.variable_workflow_02VGC5J7T15QG6fz4EXGeVJDHETCvspJekf$",
+                                        "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.local.variable_workflow_02VGC5J7T1BDI7LVeIoDcG8EmyEkKxpQvLl$",
+                                        "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.local.variable_workflow_02VGC5J7T1GRH0erBxMrhPFpZtFbdYYMNxA$",
+                                        "$activity.definition_activity_02VGC5J7T4D1X1RsykWE9qRBdXs9PnCqmpL.output.variable_workflow_02OARC9VFXYYO4b38s5o6V2tp2XPYJhpBlL$"
+                                      ],
+                                      "script_queries": [
+                                        {
+                                          "script_query": "result_json",
+                                          "script_query_name": "updated_results",
+                                          "script_query_type": "string"
+                                        }
+                                      ],
+                                      "skip_execution": false
+                                    },
+                                    "object_type": "definition_activity"
+                                  },
+                                  {
+                                    "unique_name": "definition_activity_02VGC5J7T4U3G1HEWUU1bKJU2pQTMpiBAnq",
+                                    "name": "Update Results Variable",
+                                    "title": "Update Results Variable",
+                                    "type": "core.set_multiple_variables",
+                                    "base_type": "activity",
+                                    "properties": {
+                                      "continue_on_failure": false,
+                                      "display_name": "Update Results Variable",
+                                      "skip_execution": false,
+                                      "variables_to_update": [
+                                        {
+                                          "variable_to_update": "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.local.variable_workflow_02VGC5J7T15QG6fz4EXGeVJDHETCvspJekf$",
+                                          "variable_value_new": "$activity.definition_activity_02VGC5J7T4LMO50YrmKzPMxU1H1KAweDBr5.output.script_queries.updated_results$"
+                                        }
+                                      ]
+                                    },
+                                    "object_type": "definition_activity"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "unique_name": "definition_activity_02VGC5J7T535R6jYiJfk4zMPrmELm3C7WDh",
+                    "name": "Failure",
+                    "title": "Failure",
+                    "type": "logic.condition_block",
+                    "base_type": "activity",
+                    "properties": {
+                      "condition": {
+                        "left_operand": "$activity.definition_activity_02VGC5J7T2X6E2yZPx8ORVdbRTU5nkMZEQJ.output.variable_workflow_02LBZJE84NJ0B1AzISl1F4NTWvukjqqB9Av$",
+                        "operator": "ne",
+                        "right_operand": "200"
+                      },
+                      "continue_on_failure": false,
+                      "display_name": "Failure",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_02VGC5J7T5CAN5LKsv5Kcb273Z5qXRC2ATI",
+                        "name": "Set Get Devices Error",
+                        "title": "Set Get Devices Error",
+                        "type": "core.set_multiple_variables",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Set Get Devices Error",
+                          "skip_execution": false,
+                          "variables_to_update": [
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.output.variable_workflow_02VGC5J7T0E5Y6HSZs94KeT6KH2mWjYJLUX$",
+                              "variable_value_new": "Failed"
+                            },
+                            {
+                              "variable_to_update": "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.output.variable_workflow_02VGC5J7T0PA03DgEdjjd0vKkEBILtrgJmJ$",
+                              "variable_value_new": "$activity.definition_activity_02VGC5J7T2X6E2yZPx8ORVdbRTU5nkMZEQJ.output.variable_workflow_02LBZJE84NPUP24DvHigeCJOoDgMk9j1hUC$"
+                            }
+                          ]
+                        },
+                        "object_type": "definition_activity"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "unique_name": "definition_activity_02VGC5J7T5MA47ZlWXs3FOLBNvlbVheVdgj",
+                "name": "Compile Report and Finalize",
+                "title": "Compile Report and Finalize",
+                "type": "python3.script",
+                "base_type": "activity",
+                "properties": {
+                  "action_timeout": 180,
+                  "continue_on_failure": false,
+                  "display_name": "Compile Report and Finalize",
+                  "script": "import sys\nimport json\n\nresults = json.loads(sys.argv[1]) if sys.argv[1] else []\n\nif not results:\n    report = \"No devices were rebooted.\"\n    status = \"Success\"\nelse:\n    report = \"| Serial | Name | Status |\\n| --- | --- | --- |\\n\"\n    failed_count = 0\n    for r in results:\n        report += f\"| {r.get('serial')} | {r.get('name')} | {r.get('status')} |\\n\"\n        if \"Failed\" in r.get('status'):\n            failed_count += 1\n\n    status = \"Partial\" if failed_count > 0 else \"Success\"\n    if failed_count == len(results) and len(results) > 0:\n        status = \"Failed\"\n\nresult_report = report\nresult_status = status\n",
+                  "script_arguments": [
+                    "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.local.variable_workflow_02VGC5J7T15QG6fz4EXGeVJDHETCvspJekf$"
+                  ],
+                  "script_queries": [
+                    {
+                      "script_query": "result_report",
+                      "script_query_name": "report",
+                      "script_query_type": "string"
+                    },
+                    {
+                      "script_query": "result_status",
+                      "script_query_name": "status",
+                      "script_query_type": "string"
+                    }
+                  ],
+                  "skip_execution": false
+                },
+                "object_type": "definition_activity"
+              },
+              {
+                "unique_name": "definition_activity_02VGC5J7T5VZ11ZAAnSVP4XCIqg09r8NXKG",
+                "name": "Set Final Outputs",
+                "title": "Set Final Outputs",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set Final Outputs",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.output.variable_workflow_02VGC5J7T0JN90xVcR2HD6hcRPY4mfPoQvj$",
+                      "variable_value_new": "$activity.definition_activity_02VGC5J7T5MA47ZlWXs3FOLBNvlbVheVdgj.output.script_queries.report$"
+                    },
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.output.variable_workflow_02VGC5J7T0E5Y6HSZs94KeT6KH2mWjYJLUX$",
+                      "variable_value_new": "$activity.definition_activity_02VGC5J7T5MA47ZlWXs3FOLBNvlbVheVdgj.output.script_queries.status$"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          },
+          {
+            "unique_name": "definition_activity_02VGC5J7T655J3YlDkQhZpb5PjeHanBb2mC",
+            "name": "Failure",
+            "title": "Failure",
+            "type": "logic.condition_block",
+            "base_type": "activity",
+            "properties": {
+              "condition": {
+                "left_operand": "$activity.definition_activity_02VGC5J7T1SVO6w0QzzZZhBrkpfEk1d5z1A.output.variable_workflow_02L9TZH6C9HVU3eHnLNP91ZKEfJOnaYpBsh$",
+                "operator": "ne",
+                "right_operand": "200"
+              },
+              "continue_on_failure": false,
+              "display_name": "Failure",
+              "skip_execution": false
+            },
+            "object_type": "definition_activity",
+            "actions": [
+              {
+                "unique_name": "definition_activity_02VGC5J7T6DV02VZoH65ZGvtqkFneAYprn9",
+                "name": "Set Get Networks Error",
+                "title": "Set Get Networks Error",
+                "type": "core.set_multiple_variables",
+                "base_type": "activity",
+                "properties": {
+                  "continue_on_failure": false,
+                  "display_name": "Set Get Networks Error",
+                  "skip_execution": false,
+                  "variables_to_update": [
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.output.variable_workflow_02VGC5J7T0E5Y6HSZs94KeT6KH2mWjYJLUX$",
+                      "variable_value_new": "Failed"
+                    },
+                    {
+                      "variable_to_update": "$workflow.definition_workflow_02VGC5J7SYW6G2atJLh8zh7OjycMA6irTAc.output.variable_workflow_02VGC5J7T0PA03DgEdjjd0vKkEBILtrgJmJ$",
+                      "variable_value_new": "$activity.definition_activity_02VGC5J7T1SVO6w0QzzZZhBrkpfEk1d5z1A.output.variable_workflow_02L9TZH6C9OFH6vfd2aZL0UruYGmQNXc5Od$"
+                    }
+                  ]
+                },
+                "object_type": "definition_activity"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "categories": [
+      "category_02LA3RNX6YL4430HdJs9thJNlUZGnFD8hfg",
+      "category_02VISPBR376QH4AKhlBrjQpaibWNbIjMOi7",
+      "category_02VORXXM4JSDI3qlY7bAxbboSkKaJXSX78L"
+    ]
+  },
+  "categories": {
+    "category_02VISPBR376QH4AKhlBrjQpaibWNbIjMOi7": {
+      "unique_name": "category_02VISPBR376QH4AKhlBrjQpaibWNbIjMOi7",
+      "name": "Demo workflows",
+      "title": "Demo workflows",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    },
+    "category_02VORXXM4JSDI3qlY7bAxbboSkKaJXSX78L": {
+      "unique_name": "category_02VORXXM4JSDI3qlY7bAxbboSkKaJXSX78L",
+      "name": "EIS Demos",
+      "title": "EIS Demos",
+      "type": "basic.category",
+      "base_type": "category",
+      "category_type": "custom",
+      "object_type": "category"
+    }
+  },
+  "atomic_workflows": [
+    "definition_workflow_02LV5GIDUTY3X0WhuidM5ZWhkjL8wQCGAPq",
+    "definition_workflow_02L9TZH5W95870XebPF2g8kSyIYcawUvljX",
+    "definition_workflow_02LBZJE7PQZVJ3crE33ELBrscM7zWeiugTw",
+    "definition_workflow_02OARC9VFXQH45U5Zv3feLk0TRwaztZwzyi"
+  ],
+  "dependent_workflows": [
+    "definition_workflow_02LV5GIDUTY3X0WhuidM5ZWhkjL8wQCGAPq",
+    "definition_workflow_02L9TZH5W95870XebPF2g8kSyIYcawUvljX",
+    "definition_workflow_02LBZJE7PQZVJ3crE33ELBrscM7zWeiugTw",
+    "definition_workflow_02OARC9VFXQH45U5Zv3feLk0TRwaztZwzyi"
+  ],
+  "module_targets": [
+    {
+      "module_type": "Meraki Endpoint",
+      "external_id": "securex:ao:meraki_workflows",
+      "proxy_endpoint_metadata_id": "meraki-platform-apis"
+    }
+  ]
+}
