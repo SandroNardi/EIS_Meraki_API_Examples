@@ -1,0 +1,25 @@
+# ═══════════════════════════════════════════════════════════════════════
+# terraform.tfvars.example
+#
+# 1. Copy this file:    cp terraform.tfvars.example terraform.tfvars
+# 2. Fill in YOUR values below
+# 3. terraform.tfvars is gitignored — your real values stay private
+# ═══════════════════════════════════════════════════════════════════════
+
+# Find your org ID:
+#   Dashboard → Organization → Settings (it's in the URL, like 1234567)
+organization_id = "1234567"
+
+# Whatever you want — visible in dashboard
+network_name = "starter-demo-branch"
+
+# Your device serials. Order doesn't matter.
+device_serials = [
+  "Q2AA-BBBB-CCCC",   # MX appliance
+  "Q2DD-EEEE-FFFF",   # MR access point
+]
+
+# Optional overrides (uncomment to change from defaults)
+# product_types = ["appliance", "wireless"]
+# time_zone      = "Europe/Rome"
+# tags          = ["demo", "milan"]

@@ -1,0 +1,83 @@
+# ═══════════════════════════════════════════════════════════════════════
+# ssids.yml — Configures two SSIDs on a Meraki wireless network
+#
+# What this playbook does:
+#   1. Configures SSID slot 0 as an OPEN guest network
+#   2. Configures SSID slot 1 as a WPA2 password-protected corporate network
+#
+# How to run:
+#   source ../.env
+#   ansible-playbook -i inventory.yml ssids.yml \
+#         -e "network_id=L_1234567890"
+# ═══════════════════════════════════════════════════════════════════════
+
+- name: Configure Meraki wireless SSIDs
+  hosts: localhost
+  gather_facts: false                # No need to gather facts on localhost
+
+  # Validate that the user provided network_id on the command line
+  pre_tasks:
+    - name: "Sanity check — network_id must be provided"
+      ansible.builtin.assert:
+        that:
+          - network_id is defined
+          - network_id | length > 0
+        fail_msg: >
+          You must pass network_id on the command line:
+            -e "network_id=L_xxxxxxxxxxxxxxxx"
+
+  tasks:
+
+    # ── TASK 1: Guest SSID (open, no password) ─────────────────────────
+    # The cisco.meraki collection wraps the Meraki Dashboard API.
+    # `meraki_mr_ssid` manages a single SSID slot on a wireless network.
+    - name: "Configure GUEST SSID (open network)"
+      cisco.meraki.networks_wireless_ssids:
+        meraki_api_key: "{{ meraki_api_key }}"
+        state: present                          # Ensure this config exists
+        networkId: "{{ network_id }}"
+        number: "{{ guest_ssid.number }}"       # Which SSID slot (0-14)
+        name: "{{ guest_ssid.name }}"
+        enabled: "{{ guest_ssid.enabled }}"
+        authMode: "{{ guest_ssid.auth_mode }}"  # "open" = no password
+        ipAssignmentMode: "{{ guest_ssid.ip_assignment_mode }}"
+        visible: "{{ guest_ssid.visible }}"
+      register: guest_result
+
+    - name: "Show guest SSID result"
+      ansible.builtin.debug:
+        msg: "✓ Guest SSID '{{ guest_ssid.name }}' configured on slot {{ guest_ssid.number }}"
+
+
+    # ── TASK 2: Corporate SSID (WPA2 password-protected) ───────────────
+    - name: "Configure CORPORATE SSID (WPA2 with PSK)"
+      cisco.meraki.networks_wireless_ssids:
+        meraki_api_key: "{{ meraki_api_key }}"
+        state: present
+        networkId: "{{ network_id }}"
+        number: "{{ corp_ssid.number }}"
+        name: "{{ corp_ssid.name }}"
+        enabled: "{{ corp_ssid.enabled }}"
+        authMode: "{{ corp_ssid.auth_mode }}"           # "psk"
+        encryptionMode: "{{ corp_ssid.encryption_mode }}"
+        wpaEncryptionMode: "{{ corp_ssid.wpa_encryption_mode }}"
+        psk: "{{ corp_ssid.psk }}"                       # The WPA2 password
+        ipAssignmentMode: "{{ corp_ssid.ip_assignment_mode }}"
+        visible: "{{ corp_ssid.visible }}"
+      register: corp_result
+      no_log: true                                       # Hide the PSK in logs!
+
+    - name: "Show corporate SSID result"
+      ansible.builtin.debug:
+        msg: "✓ Corporate SSID '{{ corp_ssid.name }}' configured on slot {{ corp_ssid.number }}"
+
+
+    # ── Summary ────────────────────────────────────────────────────────
+    - name: "Final summary"
+      ansible.builtin.debug:
+        msg:
+          - "═════════════════════════════════════════════"
+          - "✓ All SSIDs configured on network {{ network_id }}"
+          - "  - Slot {{ guest_ssid.number }}: {{ guest_ssid.name }} (open)"
+          - "  - Slot {{ corp_ssid.number }}: {{ corp_ssid.name }} (WPA2)"
+          - "═════════════════════════════════════════════"

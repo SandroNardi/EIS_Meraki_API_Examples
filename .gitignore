@@ -1,2 +1,16 @@
 .meraki_oauth.json
 reset_deploy.py
+
+# Secrets
+.env
+*.tfvars
+ansible/group_vars/all.yml
+
+# Terraform artifacts
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+
+# Ansible artifacts
+*.retry

@@ -1,0 +1,15 @@
+# ═══════════════════════════════════════════════════════════════════════
+# inventory.yml — Defines the "hosts" Ansible will operate on
+#
+# Meraki is special: there's no SSH target — we just call the API from
+# our local machine. So our "host" is literally `localhost`.
+#
+# `connection: local` means Ansible runs everything on this machine,
+# without trying to SSH anywhere.
+# ═══════════════════════════════════════════════════════════════════════
+
+all:
+  hosts:
+    localhost:
+      ansible_connection: local       # No SSH, just run locally
+      ansible_python_interpreter: "{{ ansible_playbook_python }}"

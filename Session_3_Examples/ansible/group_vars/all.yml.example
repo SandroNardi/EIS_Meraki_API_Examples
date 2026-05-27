@@ -1,0 +1,36 @@
+# ═══════════════════════════════════════════════════════════════════════
+# group_vars/all.yml.example
+#
+# 1. Copy this file:    cp group_vars/all.yml.example group_vars/all.yml
+# 2. Fill in your values below
+# 3. all.yml is gitignored
+#
+# These variables are loaded automatically for every host in the inventory.
+# ═══════════════════════════════════════════════════════════════════════
+
+# ──── Authentication ────────────────────────────────────────────────────
+# Pulled from environment variable (which you set via `source ../.env`)
+meraki_api_key: "{{ lookup('env', 'MERAKI_DASHBOARD_API_KEY') }}"
+
+
+# ──── Guest SSID (open, no password) ────────────────────────────────────
+guest_ssid:
+  number: 0                          # SSID slot 0-14 (Meraki has 15 slots)
+  name: "Starter-Guest"              # What users see when scanning Wi-Fi
+  enabled: true
+  auth_mode: "open"                  # No password = open network
+  ip_assignment_mode: "NAT mode"     # Isolated guest mode (recommended)
+  visible: true                      # Broadcast the SSID name
+
+
+# ──── Corporate SSID (WPA2 with shared password) ────────────────────────
+corp_ssid:
+  number: 1                          # SSID slot 1
+  name: "Starter-Corp"
+  enabled: true
+  auth_mode: "psk"                   # Pre-shared key (WPA2 password)
+  encryption_mode: "wpa"
+  wpa_encryption_mode: "WPA2 only"
+  psk: "ChangeMe-Strong-Passphrase!" # ⚠ replace with your real password
+  ip_assignment_mode: "Bridge mode"  # Bridge into your LAN
+  visible: true

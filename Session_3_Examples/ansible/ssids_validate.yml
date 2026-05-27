@@ -1,0 +1,191 @@
+# ═══════════════════════════════════════════════════════════════════════
+# ssids_validate.yml — READ-ONLY drift check for Meraki SSIDs
+#
+# What this playbook does:
+#   1. Queries the Meraki API for the CURRENT SSID configuration
+#   2. Compares it against your DESIRED config in group_vars/all.yml
+#   3. Reports any differences (drift) — but makes NO changes
+#
+# Why this matters:
+#   "Drift" happens when someone edits config in the dashboard manually.
+#   This playbook catches that by comparing reality vs. your YAML.
+#
+# Key technique:
+#   Every task uses `check_mode: false` so it runs even in --check mode,
+#   and we use `register` + `assert` to flag mismatches without aborting
+#   the run on the first failure.
+#
+# How to run:
+#   source ../.env
+#   ansible-playbook -i inventory.yml ssids_validate.yml \
+#         -e "network_id=L_1234567890"
+#
+# Exit codes:
+#   0 = all SSIDs match desired state (no drift)
+#   2 = drift detected (one or more SSIDs differ)
+# ═══════════════════════════════════════════════════════════════════════
+
+- name: "Validate Meraki SSID configuration (read-only)"
+  hosts: localhost
+  gather_facts: false
+
+  # ─── Pre-flight checks ──────────────────────────────────────────────
+  pre_tasks:
+    - name: "Sanity check — network_id must be provided"
+      ansible.builtin.assert:
+        that:
+          - network_id is defined
+          - network_id | length > 0
+        fail_msg: >
+          You must pass network_id on the command line:
+            -e "network_id=L_xxxxxxxxxxxxxxxx"
+
+  # We initialize a list to collect drift findings as we go.
+  # `vars` at the play level acts like a scratchpad we mutate per-task.
+  vars:
+    drift_findings: []   # populated by tasks below
+
+  tasks:
+
+    # ── STEP 1: Fetch the LIVE config from the Meraki Dashboard ───────
+    # `_info` modules are the read-only counterparts to action modules.
+    # They GET data from the API and never modify anything.
+    #
+    # `check_mode: false` ensures this runs even during dry runs
+    # (--check). Without it, Ansible would skip API calls in check mode.
+    - name: "Fetch current SSID configuration from Meraki"
+      cisco.meraki.networks_wireless_ssids_info:
+        meraki_api_key: "{{ meraki_api_key }}"
+        networkId: "{{ network_id }}"
+      register: live_ssids
+      check_mode: false
+      changed_when: false   # Reading data is never a "change"
+
+    - name: "Show how many SSID slots came back"
+      ansible.builtin.debug:
+        msg: "Retrieved {{ live_ssids.data | length }} SSID slots from network {{ network_id }}"
+
+
+    # ── STEP 2: Pluck out the two SSIDs we care about ─────────────────
+    # The API returns all 15 slots — we just want slots matching our
+    # configured guest_ssid.number and corp_ssid.number.
+    #
+    # `selectattr` filters the list; `first` picks the single match.
+    - name: "Extract the GUEST SSID slot from the live config"
+      ansible.builtin.set_fact:
+        live_guest: "{{ live_ssids.data
+                        | selectattr('number', 'equalto', guest_ssid.number)
+                        | list
+                        | first }}"
+
+    - name: "Extract the CORPORATE SSID slot from the live config"
+      ansible.builtin.set_fact:
+        live_corp: "{{ live_ssids.data
+                       | selectattr('number', 'equalto', corp_ssid.number)
+                       | list
+                       | first }}"
+
+
+    # ── STEP 3: Compare GUEST SSID — field by field ───────────────────
+    # We build a dict of "field name → expected vs actual" pairs, then
+    # filter for mismatches. Each mismatch is appended to drift_findings.
+    #
+    # Why per-field comparison instead of `live_guest == guest_ssid`?
+    # Because the API returns MORE fields than we set (defaults, IDs,
+    # timestamps). We must only compare the fields WE manage.
+    - name: "Check GUEST SSID fields against desired config"
+      vars:
+        # Map: field_label → [expected_value, actual_value]
+        guest_checks:
+          name:                ["{{ guest_ssid.name }}",                "{{ live_guest.name }}"]
+          enabled:             ["{{ guest_ssid.enabled }}",             "{{ live_guest.enabled }}"]
+          authMode:            ["{{ guest_ssid.auth_mode }}",           "{{ live_guest.authMode }}"]
+          ipAssignmentMode:    ["{{ guest_ssid.ip_assignment_mode }}",  "{{ live_guest.ipAssignmentMode }}"]
+          visible:             ["{{ guest_ssid.visible }}",             "{{ live_guest.visible }}"]
+      ansible.builtin.set_fact:
+        # For each (field, [expected, actual]) where expected != actual,
+        # append a finding to drift_findings.
+        drift_findings: >-
+          {{ drift_findings + [
+               {
+                 'ssid': guest_ssid.name,
+                 'slot': guest_ssid.number,
+                 'field': item.key,
+                 'expected': item.value[0] | string,
+                 'actual':   item.value[1] | string,
+               }
+             ]
+          }}
+      loop: "{{ guest_checks | dict2items }}"
+      when: item.value[0] | string != item.value[1] | string
+      loop_control:
+        label: "{{ item.key }}"   # cleaner output
+
+
+    # ── STEP 4: Compare CORPORATE SSID — same pattern ─────────────────
+    # Note: we deliberately DO NOT compare the PSK. The Meraki API
+    # never returns the PSK in plaintext (security feature), so there's
+    # nothing to compare against. If you need to verify the PSK, do it
+    # by attempting to connect from a client device.
+    - name: "Check CORPORATE SSID fields against desired config"
+      vars:
+        corp_checks:
+          name:                 ["{{ corp_ssid.name }}",                 "{{ live_corp.name }}"]
+          enabled:              ["{{ corp_ssid.enabled }}",              "{{ live_corp.enabled }}"]
+          authMode:             ["{{ corp_ssid.auth_mode }}",            "{{ live_corp.authMode }}"]
+          encryptionMode:       ["{{ corp_ssid.encryption_mode }}",      "{{ live_corp.encryptionMode | default('') }}"]
+          wpaEncryptionMode:    ["{{ corp_ssid.wpa_encryption_mode }}",  "{{ live_corp.wpaEncryptionMode | default('') }}"]
+          ipAssignmentMode:     ["{{ corp_ssid.ip_assignment_mode }}",   "{{ live_corp.ipAssignmentMode }}"]
+          visible:              ["{{ corp_ssid.visible }}",              "{{ live_corp.visible }}"]
+      ansible.builtin.set_fact:
+        drift_findings: >-
+          {{ drift_findings + [
+               {
+                 'ssid': corp_ssid.name,
+                 'slot': corp_ssid.number,
+                 'field': item.key,
+                 'expected': item.value[0] | string,
+                 'actual':   item.value[1] | string,
+               }
+             ]
+          }}
+      loop: "{{ corp_checks | dict2items }}"
+      when: item.value[0] | string != item.value[1] | string
+      loop_control:
+        label: "{{ item.key }}"
+
+
+    # ── STEP 5: Print a friendly report ───────────────────────────────
+    # If drift_findings is empty → green light.
+    # If not empty → print each mismatch in a readable format.
+    - name: "Print PASS message when no drift found"
+      ansible.builtin.debug:
+        msg:
+          - "═══════════════════════════════════════════════════════"
+          - "✓ NO DRIFT — all SSIDs match desired configuration"
+          - "  Network: {{ network_id }}"
+          - "  Slot {{ guest_ssid.number }}: {{ guest_ssid.name }}"
+          - "  Slot {{ corp_ssid.number }}: {{ corp_ssid.name }}"
+          - "═══════════════════════════════════════════════════════"
+      when: drift_findings | length == 0
+
+    - name: "Print FAIL message and itemized drift list"
+      ansible.builtin.debug:
+        msg:
+          - "═══════════════════════════════════════════════════════"
+          - "❌ DRIFT DETECTED — {{ drift_findings | length }} field(s) differ"
+          - "═══════════════════════════════════════════════════════"
+          - "{{ drift_findings }}"
+      when: drift_findings | length > 0
+
+
+    # ── STEP 6: Fail the play if any drift was found ──────────────────
+    # `assert` is the canonical way to stop a play with a clear error.
+    # By failing here (after we've already printed the report), the
+    # user sees BOTH the details AND a non-zero exit code (great for CI).
+    - name: "Fail the play if drift exists (so CI/CD can catch it)"
+      ansible.builtin.assert:
+        that:
+          - drift_findings | length == 0
+        fail_msg: "Configuration drift detected — review the report above and re-run ssids.yml to remediate."
+        success_msg: "All SSIDs are in the desired state."
